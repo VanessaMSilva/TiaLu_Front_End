@@ -1,0 +1,117 @@
+.blocos{
+    margin-top: 5%;
+    text-align: center;
+    display: inline-block;
+    width: 50%;
+    background-color: #BFDDF3;  
+}
+
+h1{
+    font-family: 𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎;
+    text-transform: uppercase;
+    font-size: 5rem;
+}
+
+button{
+    font-size: 1.3rem;
+    padding: 2% 4%;
+    border-radius:15px;
+    background-color: pink;
+    border: #ccc;
+    font-family: 𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎;
+}
+
+body{
+    background-color: #BFDDF3;
+}
+
+.crud li{
+    text-decoration: underline;
+    display: inline-block;
+    margin: 0 10%;
+    font-size: 1.5rem;
+}
+
+label{
+        width: 150px;
+        display: inline-block;
+        margin-right: 10px;
+}
+
+.forms{
+    background-color: pink;
+    text-align: left;
+    width: 60%;
+    padding: 5%;
+    border-radius: 20px;    
+}
+
+.forms div{
+    margin: 2% 20px;
+    align-items:flex-end;
+}
+
+div input{
+    padding: 5px;
+    width: 15vh;
+    font-size: 18px;
+}
+.forms{
+    margin: auto;
+    align-content: center;
+}
+.Cadastro{
+    background-color: #BFDDF3;
+    border-style:dashed;
+    border-color: #4fa9e9;
+}
+
+.Alterar{
+    background-color: #c5c525;
+    border-style:dashed;
+    border-color: #92e032;
+}
+
+.Excluir{
+    background-color: #bc1010;
+    border-style:dashed;
+    border-color: #c41717;
+}
+
+
+.supre{
+    margin: 0% 10%;
+    text-align: center;
+}
+
+#main-container{
+    margin-top: 7rem;
+}
+.vertical-divider {
+    width: 7px; /* Largura da linha vertical */
+    
+    background-color: #000; /* Cor da linha */
+    height: 100%; /* Altura da linha, ajuste conforme necessário */
+}
+
+@media (max-width: 1056px) {
+    .blocos{
+        display: block;
+        margin: auto;
+    }
+    .forms{
+        background-color: pink;
+        text-align: left;
+        width: 100%;
+        padding: 5%;
+        border-radius: 20px;    
+    }
+    .crud li{
+        display: block;
+        margin: 10%;
+        font-size: 1.5rem;
+    }
+    .supre{
+        margin: 0px;
+    }
+}
