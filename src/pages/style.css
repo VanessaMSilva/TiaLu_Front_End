@@ -50,6 +50,18 @@ label{
     margin: 2% 20px;
     align-items:flex-end;
 }
+.horarios {
+    display: flex;
+    justify-content: space-between;
+}
+.horarios-chegada, .horarios-saida {
+    width: 45%; 
+}
+
+.horario-atual {
+    margin-top: 20px;
+    text-align: center;
+}
 
 div input{
     padding: 5px;
