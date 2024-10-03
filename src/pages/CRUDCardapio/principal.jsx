@@ -18,12 +18,11 @@ function Principal(){
                 {cardapio.map((card) => {
                     return (
                     <div  className="todo">
-                        <button 
+                        <input 
                             onClick = {() => modifyStatusTodo(card)}
-                            type="radio" name="menu"
                             style={{background: card.status ? "#A879E6" : "white"}}
-                            className="radio"
-                        ></button>
+                            className="checkbox"
+                        ></input>
                         <p>{card.name}</p>
                         <p>Descrição: {card.description}</p>
                         <button onClick={() => handleWithEditButtonClick(card)} className="icon">
