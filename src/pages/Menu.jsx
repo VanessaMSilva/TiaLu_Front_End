@@ -47,7 +47,7 @@ export function Menu(){
                     <li><a href="/Cadastrarv">Venda</a></li>
                     <li><a href="/Relatorio">Relátorio</a></li>
                     <li><a href="/Horario">Horário picos</a></li>
-                    <li><a href="/">Cardapio</a></li>
+                    <li><a href="/Cadastrarcar">Cardapio</a></li>
                     <li><a href="/sobre">Sobre</a></li>
                 </ul>
                 </nav>

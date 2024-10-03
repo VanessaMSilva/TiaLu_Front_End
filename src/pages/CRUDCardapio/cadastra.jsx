@@ -1,8 +1,12 @@
 import Menu from "./../Menu";
 import tia from './../../assets/tialu.png'; // ajuste o caminho conforme a estrutura do seu projeto
 
+const arrayTodos = [
+    {name: "Galinhada", status: false, description: "Arroz amarelo"},
+    {name: "Strogonof", status: false, description: "Com batata palha"},
+];
 
-function Alterar(){
+function Cadastrar(){
     return(
         <div>
             <Menu/>
@@ -11,63 +15,31 @@ function Alterar(){
         <div className="crud" id="center">
             <nav>
                 <ul>
-                    <li><a href="/Cadastrarc">Cadastrar</a></li>
-                    <li><a href="/Alterarc">Alterar</a></li>
-                    <li><a href="/Excluirc">Excluir</a></li>
+                    <li><a href="/Cadastrarcar">Cadastrar</a></li>
+                    <li><a href="/Alterarcar">Alterar</a></li>
+                    <li><a href="/Excluircar">Excluir</a></li>
                 </ul>
             </nav>
         </div>
         <div className="forms">
             <form action="">
                 <div>
-                    <label htmlFor="cpf">CPF:</label>
-                    <input type="text" />
-                </div>
-                <button className="Excluir">Buscar</button>
-
-            </form>
-            <form action="">
-                <div>
-                    <label htmlFor="Nome">Nome:</label>
+                    <label htmlFor="Nome">Nome do prato:</label>
+                    <br/>
                     <input type="text" />
                 </div>
                 <div>
-                    <label htmlFor="Codigo">Codigo:</label>
-                    <input type="text" />
+                    <label htmlFor="Descricao">Descrição:</label>
+                    <br/>
+                    <textarea></textarea>
                 </div>
                 <div>
-                    <label htmlFor="cpf">CPF/CNPJ:</label>
-                    <input type="text" />
+                    <label htmlFor="img">Foto:</label>
+                    <br/>
+                    <input type="file" />
                 </div>
-                <div>
-                    <label htmlFor="Curso">Curso:</label>
-                    <input type="text" />
-                </div>
-                <div>
-                    <label htmlFor="Cidade">Cidade</label>
-                    <input type="text" />
-                </div>
-                <div>
-                    <label htmlFor="UF">UF</label>
-                    <input type="text" />
-                </div>
-                <div>
-                    <label htmlFor="Telefone">Telefone</label>
-                    <input type="text" />
-                </div>
-                <div>
-                    <label htmlFor="email">E-mail</label>
-                    <input type="text" />
-                </div>
-                <div>
-                    <label htmlFor="email">Observação</label>
-                    <textarea name="observação" id="obs"></textarea>
-                </div>
-                
-                
-                
-                
-                <button className="Alterar">Alterar</button>
+            
+                <button className="Cadastro">Cadastrar</button>
             </form>
         </div>
     </div>
@@ -80,4 +52,4 @@ function Alterar(){
     )
 }
 
-export default Alterar
+export default Cadastrar

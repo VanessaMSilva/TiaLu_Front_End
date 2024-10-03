@@ -3,7 +3,6 @@ import Home from "./pages/Home";
 import Sobre from "./pages/Sobre";
 import Relatorio from "./pages/Relatorio";
 import Horario from "./pages/Horarios";
-
 //Importa as pastas de CRUD de produto
 import Cadastrarp from "./pages/CRUDProduto/cadastrar";
 import Alterarp from "./pages/CRUDProduto/alterar";
@@ -16,7 +15,11 @@ import Excluirc from "./pages/CRUDClientes/excluir";
 import Cadastrarv from "./pages/CRUDVendas/cadastrar";
 import Alterarv from "./pages/CRUDVendas/alterar";
 import Excluirv from "./pages/CRUDVendas/excluir";
-
+//Importa as pastas de CRUD de cardapio
+import Principalcar from "./pages/CRUDCardapio/principal";
+import Cadastrarcar from "./pages/CRUDCardapio/cadastra";
+import Alterarcar from "./pages/CRUDCardapio/alterar";
+import Excluircar from "./pages/CRUDCardapio/excluir";
 
 function App() {
   
@@ -29,17 +32,22 @@ function App() {
         <Route path="/Relatorio" element={<Relatorio/>}/>
         <Route path="/Horario" element={<Horario/>}/>
 
-
         <Route path="/Cadastrarp" element={<Cadastrarp/>}/>
         <Route path="/Alterarp" element={<Alterarp/>}/>
         <Route path="/Excluirp" element={<Excluirp/>}/>
+
         <Route path="/Cadastrarc" element={<Cadastrarc/>}/>
         <Route path="/Alterarc" element={<Alterarc/>}/>
         <Route path="/Excluirc" element={<Excluirc/>}/>
+
         <Route path="/Cadastrarv" element={<Cadastrarv/>}/>
         <Route path="/Alterarv" element={<Alterarv/>}/>
         <Route path="/Excluirv" element={<Excluirv/>}/>
 
+        <Route path="/Principalcar" element={<Principalcar/>}/>
+        <Route path="/Cadastrarcar" element={<Cadastrarcar/>}/>
+        <Route path="/Alterarcar" element={<Alterarcar/>}/>
+        <Route path="/Excluircar" element={<Excluircar/>}/>
       </Routes>
       </BrowserRouter>    
     </div>
