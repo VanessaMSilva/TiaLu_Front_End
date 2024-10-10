@@ -22,7 +22,7 @@ button{
 }
 
 body{
-    background-color: #BFDDF3;
+    background-color: rgb(191, 221, 243);
 }
 
 .crud li{
@@ -136,14 +136,7 @@ button {
     text-align: center;
   }
   
-  .container {
-    background-color: #dae0f5;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+  
   .todos {
     background-color: white;
   }
@@ -210,3 +203,16 @@ button {
   .icon{
     padding: 0.1%;
   }
+
+  /*Web scraping*/
+  .labels{
+   margin-bottom: 10px;
+  }
+
+ #sobre{
+    
+    padding: 5vh;
+    border-radius: 2%;
+    background-color: rgba(235, 243, 250, 0.3);
+    border: 3px solid rgb(134, 181, 214, 0.5);
+ }
