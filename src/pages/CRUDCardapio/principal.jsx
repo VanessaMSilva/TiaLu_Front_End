@@ -5,16 +5,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Principal(){
-    
+    async function modifyStatusTodo(card) {
+        const response = await axios.put("http://localhost:3333/cardapio", {
+          id: card.id,
+          status: !card.status,
+        });
+        getCardapio();
+      }
     const Cardapio = ({cardapio}) => {   
         return (
             <div className="todos">
                 {cardapio.map((card) => {
                     return (
                     <div  className="todo">
-                        <input type="radio" name="menu"
+                        <input 
+                            onClick = {() => modifyStatusTodo(card)}
                             style={{background: card.status ? "#A879E6" : "white"}}
-                            className="radio"
+                            className="checkbox"
                         ></input>
                         <p>{card.name}</p>
                         <p>Descrição: {card.description}</p>
@@ -30,13 +37,17 @@ function Principal(){
             </div>
         );
     };
-
+    
 
     async function handleWithNewButton() {
         console.log("fasfas");
         setInputVisibility(!inputVisibility);
+        getCardapio();
     }
-
+    async function handleWithEditButtonClick(card) {
+        setSelectedCardapio(card);
+        setInputVisibility(true);
+    }
     async function getCardapio() {
         const response = await axios.get("http://localhost:3333/cardapio");
         console.log(response);
@@ -50,7 +61,7 @@ function Principal(){
           description: inputDescription,
         });
         setSelectedCardapio();
-        setInputVisility(false);
+        setInputVisibility(false);
         getCardapio();
         setInputValue("");
       }
@@ -61,7 +72,7 @@ function Principal(){
             description: inputDescription,
         });
         getCardapio();
-        setInputVisility(!inputVisibility);
+        setInputVisibility(!inputVisibility);
         setInputValue("");
         setInputDescription("");
     }
