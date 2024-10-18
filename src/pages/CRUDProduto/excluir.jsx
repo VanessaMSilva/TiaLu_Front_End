@@ -1,8 +1,58 @@
 import Menu from "./../Menu";
 import tia from '../../assets/tialu.png'; // ajuste o caminho conforme a estrutura do seu projeto
-
+import React, { useState } from 'react';
+import axios from "axios";
 
 function Excluir(){
+    const [cod, setCod] = useState('');
+    const [produto, setProduto] = useState({
+        nome: '',
+        cod: '',
+        tamanho: '',
+        info: '',
+        imagem: ''
+    });
+
+    async function buscarProduto(e) {
+        e.preventDefault();
+        try {
+            const response = await axios.get(`http://localhost:3333/produto/${cod}`);
+            console.log("Dados do produto:", response.data);
+            
+            if (response.data) {
+                setProduto(response.data);
+            } else {
+                alert("Produto não encontrado."); 
+            }
+        } catch (error) {
+            console.error("Erro ao buscar produto:", error);
+            alert("Produto não encontrado.");
+        }
+    }
+
+    async function excluirProduto(e) {
+        e.preventDefault(); 
+        try {
+            if (!produto.cod) {
+                alert("Informe o código do produto.");
+                return;
+            }
+
+            await axios.delete(`http://localhost:3333/produto/${produto.cod}`);
+            alert("Produto excluído com sucesso!");
+            setProduto({
+                nome: '',
+                cod: '',
+                tamanho: '',
+                info: '',
+                imagem: ''
+            });
+            setCod('');
+        } catch (error) {
+            console.error("Erro ao excluir produto:", error);
+            alert("Erro ao excluir produto.");
+        }
+    }
     return(
         <div>
             <Menu/>
@@ -22,30 +72,46 @@ function Excluir(){
         <div className="forms">
             <form action="" method="POST">
                 <div>
-                    <label htmlFor="Nome">Codigo de barra:</label>
-                    <input type="text" />
-                </div>                     
+                    <label htmlFor="cod">Codigo de barra:</label>
+                    <input type="text" value={cod}
+                    onChange={(e) => setCod(e.target.value)} />
+                </div>   
+                <button onClick={buscarProduto} className="Excluir">Buscar</button>
+                 
             </form>
             <h2>Informações</h2>
             <form action="">
-                <div>
-                    <label htmlFor="Nome">Nome Produto:</label>
-                    <input type="text" />
-                </div>
-                
-                <div>
-                    <label htmlFor="Nome">Tamanho:</label>
-                    <input type="text" />
+            <div>
+                    <label htmlFor="Nome">Nome:</label>
+                    <input type="text" value={produto.nome} style={{ width: '100%' }} 
+                    readOnly />
                 </div>
                 <div>
-                    <label htmlFor="Nome">Informações:</label>
-                    <input type="text" />
+                    <label htmlFor="cod">Codigo de barra:</label>
+                    <input type="text" value={produto.cod} style={{ width: '100%' }}
+                     readOnly/>
                 </div>
                 <div>
-                    <label htmlFor="Nome">Imagem</label>
-                    <input type="text" />
+                    <label htmlFor="tamanho">Tamanho:</label>
+                    <input type="text" value={produto.tamanho} style={{ width: '100%' }}
+                     readOnly/>
                 </div>
-                <button className="Excluir">Excluir</button>
+                <div>
+                    <label htmlFor="info">Informação:</label>
+                    <textarea name="info" id="obs" value={produto.info} style={{ width: '100%' }} 
+                    readOnly></textarea>
+                </div>
+                <div>
+                    <label htmlFor="imagem">Imagem:</label>
+                    {produto.imagem && (
+                    <img 
+                    src={`data:image/jpeg;base64,${produto.imagem}`} 
+                    alt="Produto" 
+                    style={{ width: '100%', height: 'auto' }} 
+                    />
+                    )}
+                </div>
+                <button onClick={excluirProduto} className="Excluir">Excluir</button>
 
             </form>
         </div>
