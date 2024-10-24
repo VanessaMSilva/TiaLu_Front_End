@@ -25,6 +25,7 @@ function Principal(){
                         ></input>
                         <p>{card.name}</p>
                         <p>Descrição: {card.description}</p>
+                        <p>Data: {card.data}</p>
                         <button onClick={() => handleWithEditButtonClick(card)} className="icon">
                             <AiOutlineEdit size={20} color="#64697b"></AiOutlineEdit>
                         </button>
@@ -59,6 +60,7 @@ function Principal(){
           id: SelectedCardapio.id,
           name: inputValue,
           description: inputDescription,
+          data: inputData,
         });
         setSelectedCardapio();
         setInputVisibility(false);
@@ -70,6 +72,7 @@ function Principal(){
         const response = await axios.post("http://localhost:3333/cardapio", {
             name: inputValue,
             description: inputDescription,
+            data: inputData,
         });
         getCardapio();
         setInputVisibility(!inputVisibility);
@@ -84,6 +87,7 @@ function Principal(){
     const [cardapio, setCardapio] = useState([]);
     const [inputValue, setInputValue] = useState("");
     const [inputDescription, setInputDescription] = useState("");
+    const [inputData, setInputData] = useState("");
     const [inputVisibility, setInputVisibility] = useState(false);
     const [SelectedCardapio, setSelectedCardapio] = useState();
     
@@ -116,6 +120,8 @@ function Principal(){
                         }
 
                         }></textarea>
+                        <input  value={inputData} className="inputData" type="date"
+                         onChange={(e) => setInputData(e.target.data)}></input>
                     <button onClick={
                         inputVisibility 
                         ? SelectedCardapio
@@ -124,6 +130,7 @@ function Principal(){
                         : handleWithNewButton
                     } 
                         className="newTaskButton">
+                        
                         {inputVisibility? "Confirme": "+ Pratos"}
                     </button>
                
