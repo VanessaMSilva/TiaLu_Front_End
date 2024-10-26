@@ -4,6 +4,8 @@ import { AiOutlineAim, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
+
 function Principal(){
     async function modifyStatusTodo(card) {
         const response = await axios.put("http://localhost:3333/cardapio", {
@@ -48,37 +50,53 @@ function Principal(){
     async function handleWithEditButtonClick(card) {
         setSelectedCardapio(card);
         setInputVisibility(true);
+        setInputValue(card.name);
+        setInputDescription(card.description);
+         // Converte a data para o formato YYYY-MM-DD
+        const formattedDate = new Date(card.data).toISOString().split('T')[0];
+
+        setInputData(formattedDate); // Define a data formatada no input
     }
     async function getCardapio() {
         const response = await axios.get("http://localhost:3333/cardapio");
         console.log(response);
         setCardapio(response.data);
+        
     }
-
     async function editCardapio() {
+
+        // Converta o inputData (que vem no formato YYYY-MM-DD) para um objeto Date
+        const formattedDate = new Date(inputData); // Converte para o tipo Date
+    
         const response = await axios.put("http://localhost:3333/cardapio", {
           id: SelectedCardapio.id,
           name: inputValue,
           description: inputDescription,
-          data: inputData,
+          data: formattedDate.toISOString(),
         });
         setSelectedCardapio();
         setInputVisibility(false);
         getCardapio();
         setInputValue("");
-      }
-
-    async function createCardapio(){
+        
+    }
+    async function createCardapio() {
+        // Converta o inputData (que vem no formato YYYY-MM-DD) para um objeto Date
+        const formattedDate = new Date(inputData); // Converte para o tipo Date
+         
         const response = await axios.post("http://localhost:3333/cardapio", {
             name: inputValue,
             description: inputDescription,
-            data: inputData,
+            data: formattedDate.toISOString(), // Enviar no formato ISO (YYYY-MM-DDTHH:MM:SSZ)
         });
+        
         getCardapio();
         setInputVisibility(!inputVisibility);
         setInputValue("");
         setInputDescription("");
+        setInputData(""); // Limpar o campo de data
     }
+    
     async function deleteCardapio(card){
         await axios.delete(`http://localhost:3333/cardapio/${card.id}`);
         getCardapio();
@@ -121,7 +139,7 @@ function Principal(){
 
                         }></textarea>
                         <input  value={inputData} className="inputData" type="date"
-                         onChange={(e) => setInputData(e.target.data)}></input>
+                         onChange={(e) => setInputData(e.target.value)}></input>
                     <button onClick={
                         inputVisibility 
                         ? SelectedCardapio
