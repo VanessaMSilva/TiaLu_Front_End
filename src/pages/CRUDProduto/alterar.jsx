@@ -72,20 +72,18 @@ function Alterar(){
         <div>
             <Menu/>
             <div id="main-container" className="container-fluid">
-            
-            <div className="crud" id="center">
+               <div className="row justify-content-center">
+                
+               <div className="col-md-4 d-flex flex-column justify-content-center align-items-start">
+               <div className="crud" id="center">
                 <nav>
                  <ul>
                     <li><a href="/Cadastrarp">Cadastrar</a></li>
-                    <li><a href="/Alterarp">Alterar</a></li>
+                    <li><a href="/Alterarp"  class="text-primary">Alterar</a></li>
                     <li><a href="/Excluirp">Excluir</a></li>
                  </ul>
                 </nav>
                </div>
-               <div className="row justify-content-center">
-                
-               <div className="col-md-4 d-flex flex-column justify-content-center align-items-start">
-              
                <div className="forms">
                 <form action="">
                     <div>
@@ -93,7 +91,8 @@ function Alterar(){
                         <input type="text" value={cod}
                         onChange={(e) => setCod(e.target.value)} style={{ width: '100%' }}/>
                     </div>
-                    <button onClick={buscarProduto} className="Excluir">Buscar</button>
+                    <div> <button onClick={buscarProduto} className="Excluir">Buscar</button></div>
+                   
 
                 </form>
                 <form action="">
@@ -123,8 +122,8 @@ function Alterar(){
                     onChange={(e) => setInputImagem(e.target.files[0])} style={{ width: '100%' }}/>
                     
                 </div>
+                <div><button onClick={alterProduto} className="Alterar">Alterar</button></div>
                 
-                <button onClick={alterProduto} className="Alterar">Alterar</button>
             </form>
         
            </div>

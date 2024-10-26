@@ -55,17 +55,17 @@ function Cadastrar(){
             <div id="main-container" className="container-fluid">
             <div className="row justify-content-center">
        
+        
+        <div className="col-md-4 d-flex flex-column justify-content-center align-items-start">
         <div className="crud" id="center">
             <nav>
                 <ul>
-                    <li><a href="/Cadastrarc">Cadastrar</a></li>
+                    <li><a href="/Cadastrarc" class="text-primary">Cadastrar</a></li>
                     <li><a href="/Alterarc">Alterar</a></li>
                     <li><a href="/Excluirc">Excluir</a></li>
                 </ul>
             </nav>
         </div>
-        <div className="col-md-6 d-flex flex-column justify-content-center align-items-start">
-
         <div className="forms">
             <form action="">
                 <div>
@@ -89,32 +89,32 @@ function Cadastrar(){
                     onChange={(e) => setInputCurso(e.target.value)} />
                 </div>
                 <div>
-                    <label htmlFor="Cidade">Cidade</label>
+                    <label htmlFor="Cidade">Cidade:</label>
                     <input type="text" value={inputCidade} 
                     onChange={(e) => setInputCidade(e.target.value)} />
                 </div>
                 <div>
-                    <label htmlFor="UF">UF</label>
+                    <label htmlFor="UF">UF:</label>
                     <input type="text" value={inputUf} 
                     onChange={(e) => setInputUf(e.target.value)} />
                 </div>
                 <div>
-                    <label htmlFor="Telefone">Telefone</label>
+                    <label htmlFor="Telefone">Telefone:</label>
                     <input type="text" value={inputTel} 
                     onChange={(e) => setInputTel(e.target.value)} />
                 </div>
                 <div>
-                    <label htmlFor="email">E-mail</label>
+                    <label htmlFor="email">E-mail:</label>
                     <input type="text" value={inputEmail} 
                     onChange={(e) => setInputEmail(e.target.value)} />
                 </div>
                 <div>
-                    <label htmlFor="text">Observação</label>
+                    <label htmlFor="text">Observação:</label>
                     <textarea name="observação" id="obs" value={inputObs}
                     onChange={(e) => setInputObs(e.target.value)} ></textarea>
                 </div>
-                
-                <button onClick={createCliente} className="Cadastro">Cadastrar</button>
+                <div> <button onClick={createCliente} className="Cadastro">Cadastrar</button></div>
+               
             </form>
         </div>
     </div>

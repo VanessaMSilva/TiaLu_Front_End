@@ -69,16 +69,17 @@ function Cadastrar(){
             <Menu/>
             <div id="main-container" className="container-fluid">
             <div className="row justify-content-center">
-        <div className="crud" id="center">
+       
+        <div className="col-md-4 d-flex flex-column justify-content-center align-items-start">
+         <div className="crud" id="center">
             <nav>
                 <ul>
-                    <li><a href="/Cadastrarp">Cadastrar</a></li>
+                    <li><a href="/Cadastrarp"  class="text-primary">Cadastrar</a></li>
                     <li><a href="/Alterarp">Alterar</a></li>
                     <li><a href="/Excluirp">Excluir</a></li>
                 </ul>
             </nav>
         </div>
-        <div className="col-md-4 d-flex flex-column justify-content-center align-items-start">
         <div className="forms">
             <form action="">
                 <div>
@@ -106,8 +107,8 @@ function Cadastrar(){
                     <input type="file" accept="image/*" 
                     onChange={handleImageChange} style={{ width: '100%' }}/> 
                 </div>
+                <div><button onClick={createProduto} className="Cadastro">Cadastrar</button></div>
                 
-                <button onClick={createProduto} className="Cadastro">Cadastrar</button>
             </form>
         </div>
     </div>

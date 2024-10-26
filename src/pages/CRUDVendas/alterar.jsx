@@ -9,17 +9,17 @@ function Alterar(){
             <div id="main-container" className="container-fluid">
             <div className="row justify-content-center">
         
+       
+        <div className="col-md-4 d-flex flex-column justify-content-center align-items-start">
         <div className="crud" id="center">
             <nav>
                 <ul>
                     <li><a href="/Cadastrarv">Cadastrar</a></li>
-                    <li><a href="/Alterarv">Alterar</a></li>
+                    <li><a href="/Alterarv"  class="text-primary">Alterar</a></li>
                     <li><a href="/Excluirv">Excluir</a></li>
                 </ul>
             </nav>
         </div>
-        <div className="col-md-6 d-flex flex-column justify-content-center align-items-start">
-
         <div className="forms">
             <form action="">
                 <div>
@@ -34,10 +34,11 @@ function Alterar(){
                     <label htmlFor="Produtos">Produtos:</label>
                     <input type="text" />
                 </div>
+                <div><button className="Alterar">Alterar</button></div>
                 
                 
                 
-                <button className="Alterar">Alterar</button>
+                
             </form>
         </div>
     </div>

@@ -25,23 +25,48 @@ body{
     background-color: rgb(191, 221, 243);
 }
 
-.crud li{
-    text-decoration: underline;
-    display: inline-block;
-    margin: 0 10%;
-    font-size: 1.5rem;
-}
+
 
 label{
         width: 150px;
         display: inline-block;
         margin-right: 10px;
 }
+.crud{
+    width: 100%;
+    display: flex;
+    justify-content: center; /* espaço igual entre os itens */
+    margin-bottom: 20px;
+}
+
+.crud nav{
+    width: 100%;
+}
+.crud nav ul {
+    display: flex;
+    justify-content: space-around; /* Espaço igual entre os itens */
+    list-style: none; /* Remove as bolinhas dos itens */
+    padding: 0; /* Remove o padding padrão */
+    margin: 0; /* Remove o margin padrão */
+}
+
+.crud li {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0 10px; /* Espaço entre os itens */
+}
+
+.crud a {
+    text-decoration: underline; /* Sublinhar o link */
+    color: inherit; /* Mantém a cor do link */
+    display: inline-block;
+}
+
 
 .forms{
     background-color: pink;
     text-align: left;
-    width: 60%;
+    width: 100%;
     padding: 5%;
     border-radius: 20px;    
 }
@@ -65,7 +90,7 @@ label{
 
 div input{
     padding: 5px;
-    width: 15vh;
+   
     font-size: 18px;
 }
 .forms{
@@ -120,7 +145,6 @@ div input{
     }
     .crud li{
         display: block;
-        margin: 10%;
         font-size: 1.5rem;
     }
     .supre{
