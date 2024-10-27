@@ -66,10 +66,15 @@ export const Container = styled.nav<MenuProps>`
       left: 0px;
       padding-left: 0px;
       width: 100%;
-      background-color: #5e3484;
+      background-color: #BFDDF3;
+      
     }
 
+
     li {
+     margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid rgb(186, 125, 135);
       padding: 0.5rem;
     }
   }

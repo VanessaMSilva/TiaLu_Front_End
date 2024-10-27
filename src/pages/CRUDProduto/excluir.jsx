@@ -85,22 +85,22 @@ function Excluir(){
             <form action="">
             <div>
                     <label htmlFor="Nome">Nome:</label>
-                    <input type="text" value={produto.nome} style={{ width: '100%' }} 
+                    <input type="text" value={produto.nome}  
                     readOnly />
                 </div>
                 <div>
                     <label htmlFor="cod">Codigo de barra:</label>
-                    <input type="text" value={produto.cod} style={{ width: '100%' }}
+                    <input type="text" value={produto.cod} 
                      readOnly/>
                 </div>
                 <div>
                     <label htmlFor="tamanho">Tamanho:</label>
-                    <input type="text" value={produto.tamanho} style={{ width: '100%' }}
+                    <input type="text" value={produto.tamanho} 
                      readOnly/>
                 </div>
                 <div>
                     <label htmlFor="info">Informação:</label>
-                    <textarea name="info" id="obs" value={produto.info} style={{ width: '100%' }} 
+                    <textarea name="info" id="obs" value={produto.info}  
                     readOnly></textarea>
                 </div>
                 <div>

@@ -75,7 +75,7 @@ function Alterar(){
                <div className="row justify-content-center">
                 
                <div className="col-md-4 d-flex flex-column justify-content-center align-items-start">
-               <div className="crud" id="center">
+               <div className="crud">
                 <nav>
                  <ul>
                     <li><a href="/Cadastrarp">Cadastrar</a></li>
@@ -89,7 +89,7 @@ function Alterar(){
                     <div>
                         <label htmlFor="cod">Codigo de barra:</label>
                         <input type="text" value={cod}
-                        onChange={(e) => setCod(e.target.value)} style={{ width: '100%' }}/>
+                        onChange={(e) => setCod(e.target.value)}/>
                     </div>
                     <div> <button onClick={buscarProduto} className="Excluir">Buscar</button></div>
                    
@@ -99,27 +99,27 @@ function Alterar(){
                 <div>
                     <label htmlFor="nome">Nome:</label>
                     <input type="text" value={produto.nome} 
-                    onChange={(e) => setProduto({...produto, nome: e.target.value})} style={{ width: '100%' }}/>
+                    onChange={(e) => setProduto({...produto, nome: e.target.value})} />
                 </div>
                 <div>
                     <label htmlFor="cod">Código de barra:</label>
                     <input type="text" value={produto.cod} 
-                    onChange={(e) => setProduto({...produto, cod: e.target.value})} style={{ width: '100%' }}/>
+                    onChange={(e) => setProduto({...produto, cod: e.target.value})} />
                 </div>
                 <div>
                     <label htmlFor="tamanho">Tamanho:</label>
                     <input type="text" value={produto.tamanho} 
-                    onChange={(e) => setProduto({...produto, tamanho: e.target.value})} style={{ width: '100%' }}/>
+                    onChange={(e) => setProduto({...produto, tamanho: e.target.value})} />
                 </div>
                 <div>
                     <label htmlFor="info">Informação:</label>
                     <textarea value={produto.info}
-                    onChange={(e) => setProduto({ ...produto, info: e.target.value })}style={{ width: '100%' }}></textarea>
+                    onChange={(e) => setProduto({ ...produto, info: e.target.value })}></textarea>
                 </div>
                 <div>
                     <label htmlFor="imagem">Nova Imagem:</label>
                     <input type="file" accept="image/*"
-                    onChange={(e) => setInputImagem(e.target.files[0])} style={{ width: '100%' }}/>
+                    onChange={(e) => setInputImagem(e.target.files[0])} />
                     
                 </div>
                 <div><button onClick={alterProduto} className="Alterar">Alterar</button></div>

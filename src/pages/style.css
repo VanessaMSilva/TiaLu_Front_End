@@ -16,8 +16,8 @@ button{
     font-size: 1.3rem;
     padding: 2% 4%;
     border-radius:15px;
-    background-color: pink;
-    border: #ccc;
+    background-color: rgb(186, 125, 135);
+    border: #fff;
     font-family: 𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎;
 }
 
@@ -28,6 +28,8 @@ body{
 
 
 label{
+        color: rgb(186, 125, 135);
+        font-size: 1.1rem;
         width: 150px;
         display: inline-block;
         margin-right: 10px;
@@ -39,10 +41,13 @@ label{
     margin-bottom: 20px;
 }
 
-.crud nav{
+.crud nav, .crud div, .crud div input, .crud div textarea, .crud div button{
     width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 1px;
 }
-.crud nav ul {
+.crud nav ul{
     display: flex;
     justify-content: space-around; /* Espaço igual entre os itens */
     list-style: none; /* Remove as bolinhas dos itens */
@@ -60,15 +65,19 @@ label{
     text-decoration: underline; /* Sublinhar o link */
     color: inherit; /* Mantém a cor do link */
     display: inline-block;
+    color: rgb(186, 125, 135);
 }
 
-
+textarea{
+    border: 1px solid rgb(186, 125, 135);
+}
 .forms{
-    background-color: pink;
+    background-color: #fff;
+    border: 1px solid rgb(186, 125, 135);
     text-align: left;
     width: 100%;
     padding: 5%;
-    border-radius: 20px;    
+    border-radius: 1px;    
 }
 
 .forms div{
@@ -89,8 +98,9 @@ label{
 }
 
 div input{
+    border: 1px solid rgb(186, 125, 135);
+    color: rgb(186, 125, 135);
     padding: 5px;
-   
     font-size: 18px;
 }
 .forms{
@@ -137,7 +147,7 @@ div input{
         margin: auto;
     }
     .forms{
-        background-color: pink;
+        background-color: rgb(186, 125, 135);
         text-align: left;
         width: 100%;
         padding: 5%;
@@ -161,22 +171,18 @@ button {
   }
   
   
-  .todos {
+.todos {
     background-color: white;
   }
   
   .todo {
     margin-top: 1rem;
     margin-bottom: -1rem;
-    display: flex;
+    
     align-items: center;
     justify-content: center;
   }
   .todo p {
-    min-width: 200px;
-    max-width: 200px;
-    text-align: start;
-  
     font-size: 1rem;
     font-weight: bold;
     color: #64697b;
@@ -192,34 +198,27 @@ button {
     margin: 10px;
   }
   .header {
-    background-color: pink;
+    background-color: rgb(186, 125, 135);
     width: 100%;
     box-shadow: 0px 0px 21px -7px rgba(0, 0, 0, 0.3);
-    margin: 20px;
+    padding: 5px;
     justify-content: center;
     align-items: center;
-    color: #64697b;
+    color: #fff;
     font-size: 0.8rem;
   }
   .newTaskButton {
+    border-radius: 0%;
     border: none;
-    background-color: pink;
-    width: 160px;
-    height: 50px;
-    border-radius: 24px;
+    background-color: rgb(186, 125, 135);
+    width: 100%;
+    height: 100%;
     margin-top: 20px;
-    color: #64697b;
+    color: #ffffff;
     font-weight: bold;
     font-size: 0.8rem;
   }
-  .inputName {
-    margin-top: 10px;
-    text-align: center;
-    border: none;
-    height: 50px;
-    width: 200px;
-    box-shadow: 0px 0px 21px -7px rgba(0, 0, 0, 0.3);
-  }
+  
   input:focus {
     outline: none;
   }
@@ -231,6 +230,7 @@ button {
   /*Web scraping*/
   .labels{
    margin-bottom: 10px;
+   color: rgb(158, 47, 66);
   }
 
  #sobre{
@@ -240,3 +240,20 @@ button {
     background-color: rgba(235, 243, 250, 0.3);
     border: 3px solid rgb(134, 181, 214, 0.5);
  }
+
+ .todos {
+    width: 600px;      /* Defina a largura do quadrado */
+    height: 500px;     /* Defina a altura do quadrado */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    overflow-y: auto;  /* Permite rolagem vertical */
+    overflow-x: auto; /* Evita rolagem horizontal */
+    background-color: #f9f9f9;
+}
+
+.todo {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}

@@ -74,7 +74,7 @@ function Cadastrar(){
          <div className="crud" id="center">
             <nav>
                 <ul>
-                    <li><a href="/Cadastrarp"  class="text-primary">Cadastrar</a></li>
+                    <li><a href="/Cadastrarp"  style={{color: '#9e2f42'}}>Cadastrar</a></li>
                     <li><a href="/Alterarp">Alterar</a></li>
                     <li><a href="/Excluirp">Excluir</a></li>
                 </ul>
@@ -85,27 +85,27 @@ function Cadastrar(){
                 <div>
                     <label htmlFor="nome">Nome:</label>
                     <input type="text" value={inputNome} 
-                    onChange={(e) => setInputNome(e.target.value)} style={{ width: '100%' }}/>
+                    onChange={(e) => setInputNome(e.target.value)} />
                 </div>
                 <div>
                     <label htmlFor="cod">Codigo de barra:</label>
                     <input type="text" value={inputCod} 
-                    onChange={(e) => setInputCod(e.target.value)} style={{ width: '100%' }}/>
+                    onChange={(e) => setInputCod(e.target.value)} />
                 </div>
                 <div>
                     <label htmlFor="tamanho">Tamanho:</label>
                     <input type="text" value={inputTamanho} 
-                    onChange={(e) => setInputTamanho(e.target.value)} style={{ width: '100%' }}/>
+                    onChange={(e) => setInputTamanho(e.target.value)} />
                 </div>
                 <div>
                     <label htmlFor="info">Informação:</label>
                     <textarea name="info" id="obs" value={inputInfo}
-                    onChange={(e) => setInputInfo(e.target.value)} style={{ width: '100%' }}></textarea>
+                    onChange={(e) => setInputInfo(e.target.value)} ></textarea>
                 </div>
                 <div>
                     <label htmlFor="imagem">Imagem:</label>
                     <input type="file" accept="image/*" 
-                    onChange={handleImageChange} style={{ width: '100%' }}/> 
+                    onChange={handleImageChange} /> 
                 </div>
                 <div><button onClick={createProduto} className="Cadastro">Cadastrar</button></div>
                 

@@ -7,24 +7,13 @@ import axios from "axios";
 
 
 function Principal(){
-    async function modifyStatusTodo(card) {
-        const response = await axios.put("http://localhost:3333/cardapio", {
-          id: card.id,
-          status: !card.status,
-        });
-        getCardapio();
-      }
+ 
     const Cardapio = ({cardapio}) => {   
         return (
             <div className="todos">
                 {cardapio.map((card) => {
                     return (
                     <div  className="todo">
-                        <input 
-                            onClick = {() => modifyStatusTodo(card)}
-                            style={{background: card.status ? "#A879E6" : "white"}}
-                            className="checkbox"
-                        ></input>
                         <p>{card.name}</p>
                         <p>Descrição: {card.description}</p>
                         <p>Data: {card.data}</p>
@@ -40,13 +29,11 @@ function Principal(){
             </div>
         );
     };
-    
-
     async function handleWithNewButton() {
         console.log("fasfas");
         setInputVisibility(!inputVisibility);
         getCardapio();
-    }
+    };
     async function handleWithEditButtonClick(card) {
         setSelectedCardapio(card);
         setInputVisibility(true);
@@ -56,31 +43,39 @@ function Principal(){
         const formattedDate = new Date(card.data).toISOString().split('T')[0];
 
         setInputData(formattedDate); // Define a data formatada no input
-    }
+    };
     async function getCardapio() {
         const response = await axios.get("http://localhost:3333/cardapio");
         console.log(response);
         setCardapio(response.data);
         
-    }
+    };
     async function editCardapio() {
 
         // Converta o inputData (que vem no formato YYYY-MM-DD) para um objeto Date
         const formattedDate = new Date(inputData); // Converte para o tipo Date
-    
-        const response = await axios.put("http://localhost:3333/cardapio", {
-          id: SelectedCardapio.id,
-          name: inputValue,
-          description: inputDescription,
-          data: formattedDate.toISOString(),
-        });
-        setSelectedCardapio();
-        setInputVisibility(false);
-        getCardapio();
-        setInputValue("");
-        
+        try {
+            const response = await axios.put("http://localhost:3333/cardapio", {
+            id: SelectedCardapio.id,
+            name: inputValue,
+            description: inputDescription,
+            data: formattedDate.toISOString(),
+            });
+            setSelectedCardapio();
+            setInputVisibility(false);
+            getCardapio();
+            setInputValue("");
+        } catch (error) {
+            // Verifica se o erro é devido à data duplicada
+            if (error.response && error.response.status === 400) {
+                alert(error.response.data.error); // Exibe o erro para o usuário
+            } else {
+                console.error('Erro ao alterar o cardápio:', error.message);
+            }
+        }
     }
     async function createCardapio() {
+        try{
         // Converta o inputData (que vem no formato YYYY-MM-DD) para um objeto Date
         const formattedDate = new Date(inputData); // Converte para o tipo Date
          
@@ -95,8 +90,15 @@ function Principal(){
         setInputValue("");
         setInputDescription("");
         setInputData(""); // Limpar o campo de data
+        } catch (error) {
+            // Verifica se o erro é devido à data duplicada
+            if (error.response && error.response.status === 400) {
+                alert(error.response.data.error); // Exibe o erro para o usuário
+            } else {
+                console.error('Erro ao criar cardápio:', error.message);
+            }
+        }
     }
-    
     async function deleteCardapio(card){
         await axios.delete(`http://localhost:3333/cardapio/${card.id}`);
         getCardapio();
@@ -116,31 +118,40 @@ function Principal(){
     return(
         <div>
             <Menu/>
-            <div className="App">
-                <header className="container">
-                <div className="header">
-                    <h2>Pratos do menu</h2>
-                    <Cardapio cardapio={cardapio}></Cardapio>
-                </div>
-                    <input 
-                        value={inputValue}
-                        style={{display: inputVisibility? "block": "none"}}
-                        onChange={(event) => {
-                            setInputValue(event.target.value);
-                        }
-                        }
-                    ></input>
-                    <textarea className="inputName"  
+            <div id="main-container" className="container-fluid">
+                <div className="row justify-content-center">
+                
+                    <div className="col-md-4 d-flex flex-column justify-content-center align-items-start">
+                    <div className="forms">
+                        <div><h2 style={{ color: 'rgb(186, 125, 135)' }}>Criar ou adicionar pratos no menu</h2></div>
+                        
+                        <div>
+                            <label htmlFor="nome">Nome do prato:</label>
+                            <input 
+                            value={inputValue}
+                            placeholder="Nome do prato"
+                            onChange={(event) => {
+                                setInputValue(event.target.value);
+                            }}
+                        ></input>
+                        </div>
+                        <div>
+                        <label htmlFor="descricao">Descrição:</label>
+                        <textarea className="inputName"  
                     value={inputDescription}
-                        style={{display: inputVisibility? "block": "none"}}
+                       placeholder="Descrição"
                         onChange={(event) => {
                             setInputDescription(event.target.value);
                         }
 
                         }></textarea>
+                        </div>
+                        <div>
+                            <label htmlFor="data">Data:</label>
                         <input  value={inputData} className="inputData" type="date"
                          onChange={(e) => setInputData(e.target.value)}></input>
-                    <button onClick={
+                        </div>
+                        <div>  <button onClick={
                         inputVisibility 
                         ? SelectedCardapio
                         ? editCardapio
@@ -150,10 +161,27 @@ function Principal(){
                         className="newTaskButton">
                         
                         {inputVisibility? "Confirme": "+ Pratos"}
-                    </button>
-               
-                </header>
+                    </button></div>
+                   
+                    </div>
+                    </div>
+                    <div className="vertical-divider d-none d-md-block"></div>
+                        <div id="tialupag" className="col-md-4 d-flex justify-content-center align-items-center">
+                        <div className="App">
+                            <header className="container">
+                                <div className="header">
+                                <h2>Pratos do menu</h2> 
+                                </div>
+                                <Cardapio cardapio={cardapio}></Cardapio>
+                            </header>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+                
+               
+           
         </div>
     );
 }
