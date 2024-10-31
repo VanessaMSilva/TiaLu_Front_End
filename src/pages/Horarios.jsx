@@ -1,8 +1,10 @@
 import Menu from "./Menu";
+import api from './../api'
 import tia from '../assets/tialu.png'; // ajuste o caminho conforme a estrutura do seu projeto
 import { useState, useEffect } from 'react';
 
-function Horario(){
+
+async function Horario(){
     const [currentTime, setCurrentTime] = useState(new Date());
 
     useEffect(() => {
@@ -12,8 +14,16 @@ function Horario(){
         return () => clearInterval(interval);
     }, []);
 
-    const horariosChegada050 = ['08:00', '12:00', '16:00']; // Exemplo de horários, puxar do scraping
-    const horariosSaidaIntercampi = ['09:00', '13:00', '17:00']; // Exemplo de horários, puxar do scraping
+    try {
+        const response = await fetch("http://localhost:5173/horarios/");
+        const data = await response.json();
+        
+        const horariosChegada050 = data.horariosChegada050;
+        const horariosSaidaIntercampi = data.horariosSaidaIntercampi;
+
+    } catch (error) {
+        console.error("Erro ao buscar horários:", error);
+    }
 
     return(
         <div className="cut">
