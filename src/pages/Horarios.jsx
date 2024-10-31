@@ -1,38 +1,45 @@
 import Menu from "./Menu";
 import api from './../api'
-import tia from '../assets/tialu.png'; // ajuste o caminho conforme a estrutura do seu projeto
-import { useState, useEffect } from 'react';
+import tia from '../assets/tialu.png'; 
+import React, { useState, useEffect } from 'react';
 
-
-async function Horario(){
+function Horario() {
+    const [horariosChegada050, setHorariosChegada050] = useState([]);
+    const [horariosSaidaIntercampi, setHorariosSaidaIntercampi] = useState([]);
     const [currentTime, setCurrentTime] = useState(new Date());
 
+    // Função para buscar os horários da API
+    async function fetchHorarios() {
+        try {
+            const response = await fetch("http://localhost:8000/horarios/");
+            const data = await response.json();
+
+            setHorariosChegada050(data.horariosChegada050);
+            setHorariosSaidaIntercampi(data.horariosSaidaIntercampi);
+        } catch (error) {
+            console.error("Erro ao buscar horários:", error);
+        }
+    }
+
     useEffect(() => {
+        // Atualiza o horário atual a cada segundo
         const interval = setInterval(() => {
             setCurrentTime(new Date());
         }, 1000);
+
+        fetchHorarios();
+
         return () => clearInterval(interval);
     }, []);
 
-    try {
-        const response = await fetch("http://localhost:5173/horarios/");
-        const data = await response.json();
-        
-        const horariosChegada050 = data.horariosChegada050;
-        const horariosSaidaIntercampi = data.horariosSaidaIntercampi;
-
-    } catch (error) {
-        console.error("Erro ao buscar horários:", error);
-    }
-
-    return(
+    return (
         <div className="cut">
-            <Menu/>
+            <Menu />
             <div className="supre">
                 <h2 className="center">Horário de pico</h2>
                 <div className="forms">
                     <div className="horarios">
-                    <div className="horarios-chegada">
+                        <div className="horarios-chegada">
                             <h3>Horários de Chegada do 050</h3>
                             <ul>
                                 {horariosChegada050.map((horario, index) => (
