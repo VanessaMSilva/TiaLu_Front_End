@@ -21,6 +21,7 @@ function Alterar(){
             </nav>
         </div>
         <div className="forms">
+            <div><h2 className="rosa">Alterar vendas</h2></div>
             <form action="">
                 <div>
                     <label htmlFor="Nome">Nome Cliente:</label>

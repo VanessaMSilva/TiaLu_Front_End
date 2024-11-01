@@ -123,7 +123,7 @@ function Principal(){
                 
                     <div className="col-md-4 d-flex flex-column justify-content-center align-items-start">
                     <div className="forms">
-                        <div><h2 style={{ color: 'rgb(186, 125, 135)' }}>Criar ou adicionar pratos no menu</h2></div>
+                    <div><h2 className="rosa">Criar ou adicionar pratos no menu</h2></div>
                         
                         <div>
                             <label htmlFor="nome">Nome do prato:</label>
@@ -135,9 +135,15 @@ function Principal(){
                             }}
                         ></input>
                         </div>
+                        
                         <div>
-                        <label htmlFor="descricao">Descrição:</label>
-                        <textarea className="inputName"  
+                            <label htmlFor="data">Data:</label>
+                            <input  value={inputData} className="inputData" type="date"
+                         onChange={(e) => setInputData(e.target.value)}></input>
+                        </div>
+                        <div>
+                            <label htmlFor="descricao">Descrição:</label>
+                            <textarea className="inputName"  
                     value={inputDescription}
                        placeholder="Descrição"
                         onChange={(event) => {
@@ -145,11 +151,6 @@ function Principal(){
                         }
 
                         }></textarea>
-                        </div>
-                        <div>
-                            <label htmlFor="data">Data:</label>
-                        <input  value={inputData} className="inputData" type="date"
-                         onChange={(e) => setInputData(e.target.value)}></input>
                         </div>
                         <div>  <button onClick={
                         inputVisibility 

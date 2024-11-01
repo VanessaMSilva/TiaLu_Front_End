@@ -81,6 +81,8 @@ function Cadastrar(){
             </nav>
         </div>
         <div className="forms">
+        <div><h2 className="rosa">Adicionar produto</h2></div>
+
             <form action="">
                 <div>
                     <label htmlFor="nome">Nome:</label>

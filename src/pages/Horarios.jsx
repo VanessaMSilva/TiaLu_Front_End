@@ -36,11 +36,16 @@ function Horario() {
         <div className="cut">
             <Menu />
             <div className="supre">
-                <h2 className="center">Horário de pico</h2>
+                <div className="header">
+                    <h2>Horário de pico</h2> 
+                </div>
                 <div className="forms">
                     <div className="horarios">
                         <div className="horarios-chegada">
+                            <div className="header">
                             <h3>Horários de Chegada do 050</h3>
+                        </div>
+                            <h3></h3>
                             <ul>
                                 {horariosChegada050.map((horario, index) => (
                                     <li key={index}>{horario}</li>
@@ -48,7 +53,9 @@ function Horario() {
                             </ul>
                         </div>
                         <div className="horarios-saida">
+                        <div className="header">
                             <h3>Horários de Saída do Intercampi</h3>
+                        </div>
                             <ul>
                                 {horariosSaidaIntercampi.map((horario, index) => (
                                     <li key={index}>{horario}</li>
@@ -57,7 +64,10 @@ function Horario() {
                         </div>
                     </div>
                     <div className="horario-atual">
-                        <h3>Horário Atual:</h3>
+                    <div className="header">
+                    <h3>Horário Atual:</h3>
+                        </div>
+                        
                         <h3>{currentTime.toLocaleTimeString()}</h3>
                     </div>
                 </div>

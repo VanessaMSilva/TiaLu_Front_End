@@ -70,6 +70,8 @@ function Alterar(){
                 </nav>
             </div>
             <div className="forms">
+            <div><h2 className="rosa">Alterar clientes</h2></div>
+
              <form action="">
                 <div>
                     <label htmlFor="cpf">CPF:</label>

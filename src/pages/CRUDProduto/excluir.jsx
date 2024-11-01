@@ -70,6 +70,8 @@ function Excluir(){
             </nav>
         </div>
         <div className="forms">
+            <div><h2 className="rosa">Excluir produto</h2></div>
+
             <form action="" method="POST">
                 <div>
                     <label htmlFor="cod">Codigo de barra:</label>

@@ -59,6 +59,7 @@ function Excluir(){
             </nav>
         </div>
         <div className="forms">
+        <div><h2 className="rosa">Excluir clientes</h2></div>
             <form action="" method="POST">
                 <div>
                     <label htmlFor="cpf">CPF:</label>
@@ -67,7 +68,6 @@ function Excluir(){
                 </div>  
                 <div> <button onClick={buscarCliente} className="Excluir">Buscar</button></div> 
             </form>
-            <div><h2>Informações:</h2></div>
             
             <form action="">
             <div>

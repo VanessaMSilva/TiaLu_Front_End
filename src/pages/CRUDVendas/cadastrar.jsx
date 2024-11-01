@@ -21,6 +21,7 @@ function Cadastrar(){
             </nav>
         </div>
         <div className="forms">
+            <div><h2 className="rosa">Adicionar vendas</h2></div>
             <form action="">
             <div>
                     <label htmlFor="Nome">Nome Cliente:</label>

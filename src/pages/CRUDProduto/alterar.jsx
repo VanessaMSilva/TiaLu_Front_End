@@ -85,6 +85,8 @@ function Alterar(){
                 </nav>
                </div>
                <div className="forms">
+               <div><h2 className="rosa">Alterar produto</h2></div>
+
                 <form action="">
                     <div>
                         <label htmlFor="cod">Codigo de barra:</label>
