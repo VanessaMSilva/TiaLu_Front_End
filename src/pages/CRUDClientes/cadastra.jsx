@@ -60,7 +60,7 @@ function Cadastrar(){
         <div className="crud" id="center">
             <nav>
                 <ul>
-                    <li><a href="/Cadastrarc" class="text-primary">Cadastrar</a></li>
+                    <li><a href="/Cadastrarc" style={{color: '#9e2f42'}}>Cadastrar</a></li>
                     <li><a href="/Alterarc">Alterar</a></li>
                     <li><a href="/Excluirc">Excluir</a></li>
                 </ul>

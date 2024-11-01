@@ -6,7 +6,6 @@ interface MenuProps {
 
 export const Container = styled.nav<MenuProps>`
   background-color: #BFDDF3;
-  border-radius: 1.25rem;
   height: 2.5rem;
   display: flex;
   align-items: center;
@@ -15,7 +14,7 @@ export const Container = styled.nav<MenuProps>`
   padding: 30px;
   justify-content: center;
   position: relative; /* Adiciona posição relativa para usar com o ul */
-  
+  border-bottom: 1px solid #ccc;
   /*NAVBAR*/
   #logo{
       position: absolute;
@@ -73,8 +72,8 @@ export const Container = styled.nav<MenuProps>`
 
     li {
      margin-bottom: 10px;
-    padding: 10px;
-    border-bottom: 1px solid rgb(186, 125, 135);
+      padding: 10px;
+      border-bottom: 1px solid rgb(186, 125, 135);
       padding: 0.5rem;
     }
   }

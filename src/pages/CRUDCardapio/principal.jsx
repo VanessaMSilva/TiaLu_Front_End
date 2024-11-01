@@ -18,10 +18,10 @@ function Principal(){
                         <p>Descrição: {card.description}</p>
                         <p>Data: {card.data}</p>
                         <button onClick={() => handleWithEditButtonClick(card)} className="icon">
-                            <AiOutlineEdit size={20} color="#64697b"></AiOutlineEdit>
+                            <AiOutlineEdit size={20} color="#fff"></AiOutlineEdit>
                         </button>
                         <button onClick={() => deleteCardapio(card)} className="icon">
-                            <AiOutlineDelete  size={20} color="#64697b"></AiOutlineDelete>
+                            <AiOutlineDelete  size={20} color="#fff"></AiOutlineDelete>
                         </button>
                     </div>
                     );

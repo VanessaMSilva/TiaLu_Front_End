@@ -1,15 +1,8 @@
-.blocos{
-    margin-top: 5%;
-    text-align: center;
-    display: inline-block;
-    width: 50%;
-    background-color: #BFDDF3;  
-}
-
 h1{
     font-family: 𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎;
     text-transform: uppercase;
-    font-size: 5rem;
+    font-size: 4.3rem;
+    text-align: center;
 }
 
 button{
@@ -25,8 +18,6 @@ body{
     background-color: rgb(191, 221, 243);
 }
 
-
-
 label{
         color: rgb(186, 125, 135);
         font-size: 1.1rem;
@@ -34,6 +25,8 @@ label{
         display: inline-block;
         margin-right: 10px;
 }
+
+
 .crud{
     width: 100%;
     display: flex;
@@ -67,6 +60,17 @@ label{
     display: inline-block;
     color: rgb(186, 125, 135);
 }
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha o label e o textarea à esquerda */
+}
+
+textarea {
+    width: 100%; /* Preenche a largura do contêiner */
+    resize: vertical; /* Permite redimensionamento apenas na vertical */
+    color: rgb(186, 125, 135);
+}
 
 textarea{
     border: 1px solid rgb(186, 125, 135);
@@ -82,7 +86,7 @@ textarea{
 
 .forms div{
     margin: 2% 20px;
-    align-items:flex-end;
+    align-items:flex-start;
 }
 .horarios {
     display: flex;
@@ -107,24 +111,6 @@ div input{
     margin: auto;
     align-content: center;
 }
-.Cadastro{
-    background-color: #BFDDF3;
-    border-style:dashed;
-    border-color: #4fa9e9;
-}
-
-.Alterar{
-    background-color: #c5c525;
-    border-style:dashed;
-    border-color: #92e032;
-}
-
-.Excluir{
-    background-color: #bc1010;
-    border-style:dashed;
-    border-color: #c41717;
-}
-
 
 .supre{
     margin: 0% 10%;
@@ -132,7 +118,7 @@ div input{
 }
 
 #main-container{
-    margin-top: 7rem;
+    margin-top: 5rem;
 }
 .vertical-divider {
     width: 7px; /* Largura da linha vertical */
@@ -146,13 +132,7 @@ div input{
         display: block;
         margin: auto;
     }
-    .forms{
-        background-color: rgb(186, 125, 135);
-        text-align: left;
-        width: 100%;
-        padding: 5%;
-        border-radius: 20px;    
-    }
+    
     .crud li{
         display: block;
         font-size: 1.5rem;
@@ -242,8 +222,7 @@ button {
  }
 
  .todos {
-    width: 600px;      /* Defina a largura do quadrado */
-    height: 500px;     /* Defina a altura do quadrado */
+    height: 400px;     /* Defina a altura do quadrado */
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px;

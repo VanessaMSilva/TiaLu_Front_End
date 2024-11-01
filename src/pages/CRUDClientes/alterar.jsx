@@ -64,7 +64,7 @@ function Alterar(){
                 <nav>
                     <ul>
                         <li><a href="/Cadastrarc">Cadastrar</a></li>
-                        <li><a href="/Alterarc" class="text-primary">Alterar</a></li>
+                        <li><a href="/Alterarc" style={{color: '#9e2f42'}}>Alterar</a></li>
                         <li><a href="/Excluirc">Excluir</a></li>
                     </ul>
                 </nav>

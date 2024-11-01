@@ -41,7 +41,7 @@ function Sobre(){
         <div id="main-container" className="container-fluid">
          
           <div className="row justify-content-center">   
-          <div className="col-md-4 flex-column justify-content-center align-items-start">
+          <div className="col-md-4 d-flex flex-column justify-content-center align-items-center">
                
                   <h1>Sobre da</h1>
                   <h1>tia lu</h1>

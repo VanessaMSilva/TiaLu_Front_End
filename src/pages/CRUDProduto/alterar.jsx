@@ -79,7 +79,7 @@ function Alterar(){
                 <nav>
                  <ul>
                     <li><a href="/Cadastrarp">Cadastrar</a></li>
-                    <li><a href="/Alterarp"  class="text-primary">Alterar</a></li>
+                    <li><a href="/Alterarp"  style={{color: '#9e2f42'}}>Alterar</a></li>
                     <li><a href="/Excluirp">Excluir</a></li>
                  </ul>
                 </nav>
@@ -116,9 +116,9 @@ function Alterar(){
                     <textarea value={produto.info}
                     onChange={(e) => setProduto({ ...produto, info: e.target.value })}></textarea>
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="imagem">Nova Imagem:</label>
-                    <input type="file" accept="image/*"
+                    <input type="file"  className="form-control" accept="image/*"
                     onChange={(e) => setInputImagem(e.target.files[0])} />
                     
                 </div>

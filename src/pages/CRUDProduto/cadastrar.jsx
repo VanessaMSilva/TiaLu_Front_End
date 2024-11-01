@@ -84,30 +84,34 @@ function Cadastrar(){
             <form action="">
                 <div>
                     <label htmlFor="nome">Nome:</label>
-                    <input type="text" value={inputNome} 
+                    <input name="nome" type="text" value={inputNome} 
                     onChange={(e) => setInputNome(e.target.value)} />
                 </div>
                 <div>
                     <label htmlFor="cod">Codigo de barra:</label>
-                    <input type="text" value={inputCod} 
+                    <input name="cod" type="text" value={inputCod} 
                     onChange={(e) => setInputCod(e.target.value)} />
                 </div>
                 <div>
                     <label htmlFor="tamanho">Tamanho:</label>
-                    <input type="text" value={inputTamanho} 
+                    <input name="tamanho" type="text" value={inputTamanho} 
                     onChange={(e) => setInputTamanho(e.target.value)} />
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="info">Informação:</label>
-                    <textarea name="info" id="obs" value={inputInfo}
+                    <textarea  id="obs" value={inputInfo}
                     onChange={(e) => setInputInfo(e.target.value)} ></textarea>
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="imagem">Imagem:</label>
-                    <input type="file" accept="image/*" 
-                    onChange={handleImageChange} /> 
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        className="form-control"
+                    />
                 </div>
-                <div><button onClick={createProduto} className="Cadastro">Cadastrar</button></div>
+                <div><button onClick={createProduto} >Cadastrar</button></div>
                 
             </form>
         </div>

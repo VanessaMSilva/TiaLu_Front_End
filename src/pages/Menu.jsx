@@ -36,9 +36,9 @@ export function Menu(){
             </ContentMobile>
             {menuOpen || window.innerWidth > 1056?  
                 <div>
-                    <a href="</>" id="logo">
+                    {/* <a href="</>" id="logo">
                       <img src={tia} alt="" />
-                    </a>
+                    </a> */}
                 <nav id="menunav">
                 <ul>
                     <li><a href="/">Ínicio</a></li>

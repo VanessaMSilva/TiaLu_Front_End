@@ -54,7 +54,7 @@ function Excluir(){
                 <ul>
                     <li><a href="/Cadastrarc">Cadastrar</a></li>
                     <li><a href="/Alterarc">Alterar</a></li>
-                    <li><a href="/Excluirc"  class="text-primary">Excluir</a></li>
+                    <li><a href="/Excluirc"  style={{color: '#9e2f42'}}>Excluir</a></li>
                 </ul>
             </nav>
         </div>
