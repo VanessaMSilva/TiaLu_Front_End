@@ -50,55 +50,71 @@ function Principal(){
         setCardapio(response.data);
         
     };
-    async function editCardapio() {
-
-        // Converta o inputData (que vem no formato YYYY-MM-DD) para um objeto Date
-        const formattedDate = new Date(inputData); // Converte para o tipo Date
-        try {
-            const response = await axios.put("http://localhost:3333/cardapio", {
-            id: SelectedCardapio.id,
-            name: inputValue,
-            description: inputDescription,
-            data: formattedDate.toISOString(),
-            });
-            setSelectedCardapio();
-            setInputVisibility(false);
-            getCardapio();
-            setInputValue("");
-        } catch (error) {
-            // Verifica se o erro é devido à data duplicada
-            if (error.response && error.response.status === 400) {
-                alert(error.response.data.error); // Exibe o erro para o usuário
-            } else {
-                console.error('Erro ao alterar o cardápio:', error.message);
-            }
-        }
+    // Função de validação dos campos obrigatórios
+function validateFields() {
+    if (!inputValue.trim()) {
+        alert("O campo 'Nome do prato' é obrigatório.");
+        return false;
     }
-    async function createCardapio() {
-        try{
-        // Converta o inputData (que vem no formato YYYY-MM-DD) para um objeto Date
-        const formattedDate = new Date(inputData); // Converte para o tipo Date
-         
+    if (!inputData.trim()) {
+        alert("O campo 'Data' é obrigatório.");
+        return false;
+    }
+    if (!inputDescription.trim()) {
+        alert("O campo 'Descrição' é obrigatório.");
+        return false;
+    }
+    return true;
+}
+
+// Função para criar cardápio com validação
+async function createCardapio() {
+    if (!validateFields()) return; // Impede o envio se houver erro na validação
+    try {
+        const formattedDate = new Date(inputData);
         const response = await axios.post("http://localhost:3333/cardapio", {
             name: inputValue,
             description: inputDescription,
-            data: formattedDate.toISOString(), // Enviar no formato ISO (YYYY-MM-DDTHH:MM:SSZ)
+            data: formattedDate.toISOString(),
         });
-        
         getCardapio();
         setInputVisibility(!inputVisibility);
         setInputValue("");
         setInputDescription("");
-        setInputData(""); // Limpar o campo de data
-        } catch (error) {
-            // Verifica se o erro é devido à data duplicada
-            if (error.response && error.response.status === 400) {
-                alert(error.response.data.error); // Exibe o erro para o usuário
-            } else {
-                console.error('Erro ao criar cardápio:', error.message);
-            }
+        setInputData("");
+    } catch (error) {
+        if (error.response && error.response.status === 400) {
+            alert(error.response.data.error);
+        } else {
+            console.error('Erro ao criar cardápio:', error.message);
         }
     }
+}
+
+// Função para editar cardápio com validação
+async function editCardapio() {
+    if (!validateFields()) return; // Impede o envio se houver erro na validação
+    const formattedDate = new Date(inputData);
+    try {
+        const response = await axios.put("http://localhost:3333/cardapio", {
+            id: SelectedCardapio.id,
+            name: inputValue,
+            description: inputDescription,
+            data: formattedDate.toISOString(),
+        });
+        setSelectedCardapio();
+        setInputVisibility(false);
+        getCardapio();
+        setInputValue("");
+    } catch (error) {
+        if (error.response && error.response.status === 400) {
+            alert(error.response.data.error);
+        } else {
+            console.error('Erro ao alterar o cardápio:', error.message);
+        }
+    }
+}
+
     async function deleteCardapio(card){
         await axios.delete(`http://localhost:3333/cardapio/${card.id}`);
         getCardapio();
