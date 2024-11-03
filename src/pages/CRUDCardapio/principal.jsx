@@ -16,7 +16,7 @@ function Principal(){
                     <div  className="todo">
                         <p>{card.name}</p>
                         <p>Descrição: {card.description}</p>
-                        <p>Data: {card.data}</p>
+                        <p>Data: {new Date(card.data).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}</p>
                         <button onClick={() => handleWithEditButtonClick(card)} className="icon">
                             <AiOutlineEdit size={20} color="#fff"></AiOutlineEdit>
                         </button>
@@ -45,10 +45,12 @@ function Principal(){
         setInputData(formattedDate); // Define a data formatada no input
     };
     async function getCardapio() {
-        const response = await axios.get("http://localhost:3333/cardapio");
-        console.log(response);
-        setCardapio(response.data);
-        
+        try {
+            const response = await axios.get("http://localhost:3333/cardapio");
+            setCardapio(response.data);
+        } catch (error) {
+            alert("Erro ao carregar os pratos do cardápio.");
+        }
     };
     // Função de validação dos campos obrigatórios
 function validateFields() {
@@ -77,6 +79,7 @@ async function createCardapio() {
             description: inputDescription,
             data: formattedDate.toISOString(),
         });
+        alert("Prato cadastrado com sucesso!");
         getCardapio();
         setInputVisibility(!inputVisibility);
         setInputValue("");
@@ -86,6 +89,7 @@ async function createCardapio() {
         if (error.response && error.response.status === 400) {
             alert(error.response.data.error);
         } else {
+            alert("Erro ao criar o prato no cardápio.");
             console.error('Erro ao criar cardápio:', error.message);
         }
     }
@@ -102,6 +106,7 @@ async function editCardapio() {
             description: inputDescription,
             data: formattedDate.toISOString(),
         });
+        alert("Prato atualizado com sucesso!");
         setSelectedCardapio();
         setInputVisibility(false);
         getCardapio();
@@ -110,14 +115,20 @@ async function editCardapio() {
         if (error.response && error.response.status === 400) {
             alert(error.response.data.error);
         } else {
+            alert("Erro ao alterar o prato do cardápio.");
             console.error('Erro ao alterar o cardápio:', error.message);
         }
     }
 }
 
     async function deleteCardapio(card){
-        await axios.delete(`http://localhost:3333/cardapio/${card.id}`);
-        getCardapio();
+        try {
+            await axios.delete(`http://localhost:3333/cardapio/${card.id}`);
+            alert("Prato excluído com sucesso!");
+            getCardapio();
+        } catch (error) {
+            alert("Erro ao excluir o prato do cardápio.");
+        }
     }
 
     const [cardapio, setCardapio] = useState([]);
