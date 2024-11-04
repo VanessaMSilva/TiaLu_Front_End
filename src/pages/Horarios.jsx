@@ -1,6 +1,4 @@
 import Menu from "./Menu";
-import api from './../api'
-import tia from '../assets/tialu.png'; 
 import React, { useState, useEffect } from 'react';
 
 function Horario() {
@@ -11,7 +9,7 @@ function Horario() {
     // Função para buscar os horários da API
     async function fetchHorarios() {
         try {
-            const response = await fetch("http://localhost:8000/horarios/");
+            const response = await fetch(" http://127.0.0.1:8000/Horario/");
             const data = await response.json();
 
             setHorariosChegada050(data.horariosChegada050);
@@ -22,7 +20,7 @@ function Horario() {
     }
 
     useEffect(() => {
-        // Atualiza o horário atual a cada segundo
+        // Atualiza o horário atual
         const interval = setInterval(() => {
             setCurrentTime(new Date());
         }, 1000);
