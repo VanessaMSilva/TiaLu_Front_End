@@ -4,32 +4,24 @@ import { AiOutlineAim, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
+
 function Principal(){
-    async function modifyStatusTodo(card) {
-        const response = await axios.put("http://localhost:3333/cardapio", {
-          id: card.id,
-          status: !card.status,
-        });
-        getCardapio();
-      }
+ 
     const Cardapio = ({cardapio}) => {   
         return (
             <div className="todos">
                 {cardapio.map((card) => {
                     return (
                     <div  className="todo">
-                        <input 
-                            onClick = {() => modifyStatusTodo(card)}
-                            style={{background: card.status ? "#A879E6" : "white"}}
-                            className="checkbox"
-                        ></input>
                         <p>{card.name}</p>
                         <p>Descrição: {card.description}</p>
+                        <p>Data: {new Date(card.data).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}</p>
                         <button onClick={() => handleWithEditButtonClick(card)} className="icon">
-                            <AiOutlineEdit size={20} color="#64697b"></AiOutlineEdit>
+                            <AiOutlineEdit size={20} color="#fff"></AiOutlineEdit>
                         </button>
                         <button onClick={() => deleteCardapio(card)} className="icon">
-                            <AiOutlineDelete  size={20} color="#64697b"></AiOutlineDelete>
+                            <AiOutlineDelete  size={20} color="#fff"></AiOutlineDelete>
                         </button>
                     </div>
                     );
@@ -37,53 +29,112 @@ function Principal(){
             </div>
         );
     };
-    
-
     async function handleWithNewButton() {
         console.log("fasfas");
         setInputVisibility(!inputVisibility);
         getCardapio();
-    }
+    };
     async function handleWithEditButtonClick(card) {
         setSelectedCardapio(card);
         setInputVisibility(true);
-    }
+        setInputValue(card.name);
+        setInputDescription(card.description);
+         // Converte a data para o formato YYYY-MM-DD
+        const formattedDate = new Date(card.data).toISOString().split('T')[0];
+
+        setInputData(formattedDate); // Define a data formatada no input
+    };
     async function getCardapio() {
-        const response = await axios.get("http://localhost:3333/cardapio");
-        console.log(response);
-        setCardapio(response.data);
+        try {
+            const response = await axios.get("http://localhost:3333/cardapio");
+            setCardapio(response.data);
+        } catch (error) {
+            alert("Erro ao carregar os pratos do cardápio.");
+        }
+    };
+    // Função de validação dos campos obrigatórios
+function validateFields() {
+    if (!inputValue.trim()) {
+        alert("O campo 'Nome do prato' é obrigatório.");
+        return false;
     }
+    if (!inputData.trim()) {
+        alert("O campo 'Data' é obrigatório.");
+        return false;
+    }
+    if (!inputDescription.trim()) {
+        alert("O campo 'Descrição' é obrigatório.");
+        return false;
+    }
+    return true;
+}
 
-    async function editCardapio() {
-        const response = await axios.put("http://localhost:3333/cardapio", {
-          id: SelectedCardapio.id,
-          name: inputValue,
-          description: inputDescription,
-        });
-        setSelectedCardapio();
-        setInputVisibility(false);
-        getCardapio();
-        setInputValue("");
-      }
-
-    async function createCardapio(){
+// Função para criar cardápio com validação
+async function createCardapio() {
+    if (!validateFields()) return; // Impede o envio se houver erro na validação
+    try {
+        const formattedDate = new Date(inputData);
         const response = await axios.post("http://localhost:3333/cardapio", {
             name: inputValue,
             description: inputDescription,
+            data: formattedDate.toISOString(),
         });
+        alert("Prato cadastrado com sucesso!");
         getCardapio();
         setInputVisibility(!inputVisibility);
         setInputValue("");
         setInputDescription("");
+        setInputData("");
+    } catch (error) {
+        if (error.response && error.response.status === 400) {
+            alert(error.response.data.error);
+        } else {
+            alert("Erro ao criar o prato no cardápio.");
+            console.error('Erro ao criar cardápio:', error.message);
+        }
     }
-    async function deleteCardapio(card){
-        await axios.delete(`http://localhost:3333/cardapio/${card.id}`);
+}
+
+// Função para editar cardápio com validação
+async function editCardapio() {
+    if (!validateFields()) return; // Impede o envio se houver erro na validação
+    const formattedDate = new Date(inputData);
+    try {
+        const response = await axios.put("http://localhost:3333/cardapio", {
+            id: SelectedCardapio.id,
+            name: inputValue,
+            description: inputDescription,
+            data: formattedDate.toISOString(),
+        });
+        alert("Prato atualizado com sucesso!");
+        setSelectedCardapio();
+        setInputVisibility(false);
         getCardapio();
+        setInputValue("");
+    } catch (error) {
+        if (error.response && error.response.status === 400) {
+            alert(error.response.data.error);
+        } else {
+            alert("Erro ao alterar o prato do cardápio.");
+            console.error('Erro ao alterar o cardápio:', error.message);
+        }
+    }
+}
+
+    async function deleteCardapio(card){
+        try {
+            await axios.delete(`http://localhost:3333/cardapio/${card.id}`);
+            alert("Prato excluído com sucesso!");
+            getCardapio();
+        } catch (error) {
+            alert("Erro ao excluir o prato do cardápio.");
+        }
     }
 
     const [cardapio, setCardapio] = useState([]);
     const [inputValue, setInputValue] = useState("");
     const [inputDescription, setInputDescription] = useState("");
+    const [inputData, setInputData] = useState("");
     const [inputVisibility, setInputVisibility] = useState(false);
     const [SelectedCardapio, setSelectedCardapio] = useState();
     
@@ -94,29 +145,41 @@ function Principal(){
     return(
         <div>
             <Menu/>
-            <div className="App">
-                <header className="container">
-                <div className="header">
-                    <h2>Pratos do menu</h2>
-                    <Cardapio cardapio={cardapio}></Cardapio>
-                </div>
-                    <input 
-                        value={inputValue}
-                        style={{display: inputVisibility? "block": "none"}}
-                        onChange={(event) => {
-                            setInputValue(event.target.value);
-                        }
-                        }
-                    ></input>
-                    <textarea className="inputName"  
+            <div id="main-container" className="container-fluid">
+                <div className="row justify-content-center">
+                
+                    <div className="col-md-4 d-flex flex-column justify-content-center align-items-start">
+                    <div className="forms">
+                    <div><h2 className="rosa">Criar ou adicionar pratos no menu</h2></div>
+                        
+                        <div>
+                            <label htmlFor="nome">Nome do prato:</label>
+                            <input 
+                            value={inputValue}
+                            placeholder="Nome do prato"
+                            onChange={(event) => {
+                                setInputValue(event.target.value);
+                            }}
+                        ></input>
+                        </div>
+                        
+                        <div>
+                            <label htmlFor="data">Data:</label>
+                            <input  value={inputData} className="inputData" type="date"
+                         onChange={(e) => setInputData(e.target.value)}></input>
+                        </div>
+                        <div>
+                            <label htmlFor="descricao">Descrição:</label>
+                            <textarea className="inputName"  
                     value={inputDescription}
-                        style={{display: inputVisibility? "block": "none"}}
+                       placeholder="Descrição"
                         onChange={(event) => {
                             setInputDescription(event.target.value);
                         }
 
                         }></textarea>
-                    <button onClick={
+                        </div>
+                        <div>  <button onClick={
                         inputVisibility 
                         ? SelectedCardapio
                         ? editCardapio
@@ -124,11 +187,29 @@ function Principal(){
                         : handleWithNewButton
                     } 
                         className="newTaskButton">
+                        
                         {inputVisibility? "Confirme": "+ Pratos"}
-                    </button>
-               
-                </header>
+                    </button></div>
+                   
+                    </div>
+                    </div>
+                    <div className="vertical-divider d-none d-md-block"></div>
+                        <div id="tialupag" className="col-md-4 d-flex justify-content-center align-items-center">
+                        <div className="App">
+                            <header className="container">
+                                <div className="header">
+                                <h2>Pratos do menu</h2> 
+                                </div>
+                                <Cardapio cardapio={cardapio}></Cardapio>
+                            </header>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+                
+               
+           
         </div>
     );
 }

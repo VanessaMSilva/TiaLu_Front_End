@@ -17,9 +17,8 @@ import Alterarv from "./pages/CRUDVendas/alterar";
 import Excluirv from "./pages/CRUDVendas/excluir";
 //Importa as pastas de CRUD de cardapio
 import Principalcar from "./pages/CRUDCardapio/principal";
-import Cadastrarcar from "./pages/CRUDCardapio/cadastra";
-import Alterarcar from "./pages/CRUDCardapio/alterar";
-import Excluircar from "./pages/CRUDCardapio/excluir";
+import Cardapio from "./pages/CRUDCardapio/cardapio";
+
 
 function App() {
   
@@ -45,9 +44,8 @@ function App() {
         <Route path="/Excluirv" element={<Excluirv/>}/>
 
         <Route path="/Principalcar" element={<Principalcar/>}/>
-        <Route path="/Cadastrarcar" element={<Cadastrarcar/>}/>
-        <Route path="/Alterarcar" element={<Alterarcar/>}/>
-        <Route path="/Excluircar" element={<Excluircar/>}/>
+        <Route path="/Cardapio" element={<Cardapio/>}/>
+
       </Routes>
       </BrowserRouter>    
     </div>

@@ -1,23 +1,16 @@
-.blocos{
-    margin-top: 5%;
-    text-align: center;
-    display: inline-block;
-    width: 50%;
-    background-color: #BFDDF3;  
-}
-
 h1{
     font-family: 𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎;
     text-transform: uppercase;
-    font-size: 5rem;
+    font-size: 4.3rem;
+    text-align: center;
 }
 
 button{
     font-size: 1.3rem;
     padding: 2% 4%;
     border-radius:15px;
-    background-color: pink;
-    border: #ccc;
+    background-color: rgb(186, 125, 135);
+    border: #fff;
     font-family: 𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎;
 }
 
@@ -25,30 +18,75 @@ body{
     background-color: rgb(191, 221, 243);
 }
 
-.crud li{
-    text-decoration: underline;
-    display: inline-block;
-    margin: 0 10%;
-    font-size: 1.5rem;
-}
-
 label{
+        color: rgb(186, 125, 135);
+        font-size: 1.1rem;
         width: 150px;
         display: inline-block;
         margin-right: 10px;
 }
 
+
+.crud{
+    width: 100%;
+    display: flex;
+    justify-content: center; /* espaço igual entre os itens */
+    margin-bottom: 20px;
+}
+
+.crud nav, .crud div, .crud div input, .crud div textarea, .crud div button{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 1px;
+}
+.crud nav ul{
+    display: flex;
+    justify-content: space-around; /* Espaço igual entre os itens */
+    list-style: none; /* Remove as bolinhas dos itens */
+    padding: 0; /* Remove o padding padrão */
+    margin: 0; /* Remove o margin padrão */
+}
+
+.crud li {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0 10px; /* Espaço entre os itens */
+}
+
+.crud a {
+    text-decoration: underline; /* Sublinhar o link */
+    color: inherit; /* Mantém a cor do link */
+    display: inline-block;
+    color: rgb(186, 125, 135);
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha o label e o textarea à esquerda */
+}
+
+textarea {
+    width: 100%; /* Preenche a largura do contêiner */
+    resize: vertical; /* Permite redimensionamento apenas na vertical */
+    color: rgb(186, 125, 135);
+}
+
+textarea{
+    border: 1px solid rgb(186, 125, 135);
+}
 .forms{
-    background-color: pink;
+    background-color: #fff;
+    border: 1px solid rgb(186, 125, 135);
     text-align: left;
-    width: 60%;
+    width: 100%;
     padding: 5%;
-    border-radius: 20px;    
+    border-radius: 1px;    
 }
 
 .forms div{
     margin: 2% 20px;
-    align-items:flex-end;
+    align-items:flex-start;
 }
 .horarios {
     display: flex;
@@ -64,32 +102,15 @@ label{
 }
 
 div input{
+    border: 1px solid rgb(186, 125, 135);
+    color: rgb(186, 125, 135);
     padding: 5px;
-    width: 15vh;
     font-size: 18px;
 }
 .forms{
     margin: auto;
     align-content: center;
 }
-.Cadastro{
-    background-color: #BFDDF3;
-    border-style:dashed;
-    border-color: #4fa9e9;
-}
-
-.Alterar{
-    background-color: #c5c525;
-    border-style:dashed;
-    border-color: #92e032;
-}
-
-.Excluir{
-    background-color: #bc1010;
-    border-style:dashed;
-    border-color: #c41717;
-}
-
 
 .supre{
     margin: 0% 10%;
@@ -97,7 +118,7 @@ div input{
 }
 
 #main-container{
-    margin-top: 7rem;
+    margin-top: 5rem;
 }
 .vertical-divider {
     width: 7px; /* Largura da linha vertical */
@@ -111,16 +132,9 @@ div input{
         display: block;
         margin: auto;
     }
-    .forms{
-        background-color: pink;
-        text-align: left;
-        width: 100%;
-        padding: 5%;
-        border-radius: 20px;    
-    }
+    
     .crud li{
         display: block;
-        margin: 10%;
         font-size: 1.5rem;
     }
     .supre{
@@ -137,22 +151,18 @@ button {
   }
   
   
-  .todos {
+.todos {
     background-color: white;
   }
   
   .todo {
     margin-top: 1rem;
     margin-bottom: -1rem;
-    display: flex;
+    
     align-items: center;
     justify-content: center;
   }
   .todo p {
-    min-width: 200px;
-    max-width: 200px;
-    text-align: start;
-  
     font-size: 1rem;
     font-weight: bold;
     color: #64697b;
@@ -168,34 +178,27 @@ button {
     margin: 10px;
   }
   .header {
-    background-color: pink;
+    background-color: rgb(186, 125, 135);
     width: 100%;
     box-shadow: 0px 0px 21px -7px rgba(0, 0, 0, 0.3);
-    margin: 20px;
+    padding: 5px;
     justify-content: center;
     align-items: center;
-    color: #64697b;
+    color: #fff;
     font-size: 0.8rem;
   }
   .newTaskButton {
+    border-radius: 0%;
     border: none;
-    background-color: pink;
-    width: 160px;
-    height: 50px;
-    border-radius: 24px;
+    background-color: rgb(186, 125, 135);
+    width: 100%;
+    height: 100%;
     margin-top: 20px;
-    color: #64697b;
+    color: #ffffff;
     font-weight: bold;
     font-size: 0.8rem;
   }
-  .inputName {
-    margin-top: 10px;
-    text-align: center;
-    border: none;
-    height: 50px;
-    width: 200px;
-    box-shadow: 0px 0px 21px -7px rgba(0, 0, 0, 0.3);
-  }
+  
   input:focus {
     outline: none;
   }
@@ -207,6 +210,7 @@ button {
   /*Web scraping*/
   .labels{
    margin-bottom: 10px;
+   color: black;
   }
 
  #sobre{
@@ -216,3 +220,23 @@ button {
     background-color: rgba(235, 243, 250, 0.3);
     border: 3px solid rgb(134, 181, 214, 0.5);
  }
+
+ .todos {
+    height: 400px;     /* Defina a altura do quadrado */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    overflow-y: auto;  /* Permite rolagem vertical */
+    overflow-x: auto; /* Evita rolagem horizontal */
+    background-color: #f9f9f9;
+}
+
+.todo {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.rosa{
+    color: rgb(186, 125, 135);
+}

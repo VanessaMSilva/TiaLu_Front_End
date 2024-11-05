@@ -36,9 +36,9 @@ export function Menu(){
             </ContentMobile>
             {menuOpen || window.innerWidth > 1056?  
                 <div>
-                    <a href="</>" id="logo">
+                    {/* <a href="</>" id="logo">
                       <img src={tia} alt="" />
-                    </a>
+                    </a> */}
                 <nav id="menunav">
                 <ul>
                     <li><a href="/">Ínicio</a></li>
@@ -47,7 +47,7 @@ export function Menu(){
                     <li><a href="/Cadastrarv">Venda</a></li>
                     <li><a href="/Relatorio">Relátorio</a></li>
                     <li><a href="/Horario">Horário picos</a></li>
-                    <li><a href="/Principalcar">Cardapio</a></li>
+                    <li><a href="/Cardapio">Cardapio</a></li>
                     <li><a href="/sobre">Sobre</a></li>
                 </ul>
                 </nav>

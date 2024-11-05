@@ -63,29 +63,29 @@ function Alterar(){
             <div id="main-container" className="container-fluid">
             <div className="row justify-content-center">
    
-        <div className="crud" id="center">
-            <nav>
-                <ul>
-                    <li><a href="/Cadastrarc">Cadastrar</a></li>
-                    <li><a href="/Alterarc">Alterar</a></li>
-                    <li><a href="/Excluirc">Excluir</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div className="col-md-6 d-flex flex-column justify-content-center align-items-start">
+            <div className="col-md-4 d-flex flex-column justify-content-center align-items-start">
+            <div className="crud" id="center">
+                <nav>
+                    <ul>
+                        <li><a href="/Cadastrarc">Cadastrar</a></li>
+                        <li><a href="/Alterarc" style={{color: '#9e2f42'}}>Alterar</a></li>
+                        <li><a href="/Excluirc">Excluir</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div className="forms">
+            <div><h2 className="rosa">Alterar clientes</h2></div>
 
-        <div className="forms">
-            <form action="">
+             <form action="">
                 <div>
                     <label htmlFor="cpf">CPF:</label>
                     <input type="text" value={cpf}
                     onChange={(e) => setCpf(e.target.value)} />
                 </div>
-                <button onClick={buscarCliente} className="Excluir">Buscar</button>
-
-            </form>
-            <form action="">
-            <div>
+                <div><button onClick={buscarCliente} className="Excluir">Buscar</button></div>
+             </form>
+             <form action="">
+                <div>
                     <label htmlFor="Nome">Nome:</label>
                     <input type="text" value={cliente.nome} 
                     onChange={(e) => setCliente({...cliente, nome: e.target.value})} />
@@ -106,42 +106,42 @@ function Alterar(){
                     onChange={(e) => setCliente({...cliente, curso: e.target.value})} />
                 </div>
                 <div>
-                    <label htmlFor="Cidade">Cidade</label>
+                    <label htmlFor="Cidade">Cidade:</label>
                     <input type="text" value={cliente.cidade} 
                     onChange={(e) => setCliente({...cliente, cidade: e.target.value})} />
                 </div>
                 <div>
-                    <label htmlFor="UF">UF</label>
+                    <label htmlFor="UF">UF:</label>
                     <input type="text" value={cliente.uf} 
                     onChange={(e) => setCliente({...cliente, uf: e.target.value})} />
                 </div>
                 <div>
-                    <label htmlFor="Telefone">Telefone</label>
+                    <label htmlFor="Telefone">Telefone:</label>
                     <input type="text" value={cliente.telefone} 
                     onChange={(e) => setCliente({...cliente, telefone: e.target.value})} />
                 </div>
                 <div>
-                    <label htmlFor="email">E-mail</label>
+                    <label htmlFor="email">E-mail:</label>
                     <input type="text" value={cliente.email} 
                     onChange={(e) => setCliente({...cliente, email: e.target.value})} />
                 </div>
                 <div>
-                    <label htmlFor="text">Observação</label>
+                    <label htmlFor="text">Observação:</label>
                     <textarea name="observação" id="obs" value={cliente.obs}
                     onChange={(e) => setCliente({...cliente, obs: e.target.value})} ></textarea>
                 </div>             
-                
-                <button onClick={alterCliente} className="Alterar">Alterar</button>
-            </form>
+               
+                <div><button onClick={alterCliente} className="Alterar">Alterar</button></div>
+             </form>
+            </div>
+        </div>
+        <div className="vertical-divider d-none d-md-block"></div>
+        <div id="tialupag" className="col-md-4 d-flex justify-content-center align-items-center">
+            <img src={tia} alt="" />
+        </div>
         </div>
     </div>
-    <div className="vertical-divider d-none d-md-block"></div>
-                <div id="tialupag" className="col-md-4 d-flex justify-content-center align-items-center">
-        <img src={tia} alt="" />
     </div>
-    
-    </div>
-    </div></div>
     )
 }
 

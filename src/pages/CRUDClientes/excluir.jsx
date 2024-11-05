@@ -47,28 +47,28 @@ function Excluir(){
             <div id="main-container" className="container-fluid">
             <div className="row justify-content-center">
       
+       
+        <div className="col-md-4 d-flex flex-column justify-content-center align-items-start">
         <div className="crud" id="center">
             <nav>
                 <ul>
                     <li><a href="/Cadastrarc">Cadastrar</a></li>
                     <li><a href="/Alterarc">Alterar</a></li>
-                    <li><a href="/Excluirc">Excluir</a></li>
+                    <li><a href="/Excluirc"  style={{color: '#9e2f42'}}>Excluir</a></li>
                 </ul>
             </nav>
         </div>
-        <div className="col-md-6 d-flex flex-column justify-content-center align-items-start">
-
         <div className="forms">
+        <div><h2 className="rosa">Excluir clientes</h2></div>
             <form action="" method="POST">
                 <div>
                     <label htmlFor="cpf">CPF:</label>
                     <input type="text" value={cpf}
                     onChange={(e) => setCpf(e.target.value)} />
-                </div>   
-                <button onClick={buscarCliente} className="Excluir">Buscar</button>
-                 
+                </div>  
+                <div> <button onClick={buscarCliente} className="Excluir">Buscar</button></div> 
             </form>
-            <h2>Informações</h2>
+            
             <form action="">
             <div>
                     <label htmlFor="Nome">Nome:</label>
@@ -91,32 +91,32 @@ function Excluir(){
                     onChange={(e) => setCliente({...cliente, curso: e.target.value})} />
                 </div>
                 <div>
-                    <label htmlFor="Cidade">Cidade</label>
+                    <label htmlFor="Cidade">Cidade:</label>
                     <input type="text" value={cliente.cidade} 
                     onChange={(e) => setCliente({...cliente, cidade: e.target.value})} />
                 </div>
                 <div>
-                    <label htmlFor="UF">UF</label>
+                    <label htmlFor="UF">UF:</label>
                     <input type="text" value={cliente.uf} 
                     onChange={(e) => setCliente({...cliente, uf: e.target.value})} />
                 </div>
                 <div>
-                    <label htmlFor="Telefone">Telefone</label>
+                    <label htmlFor="Telefone">Telefone:</label>
                     <input type="text" value={cliente.telefone} 
                     onChange={(e) => setCliente({...cliente, telefone: e.target.value})} />
                 </div>
                 <div>
-                    <label htmlFor="email">E-mail</label>
+                    <label htmlFor="email">E-mail:</label>
                     <input type="text" value={cliente.email} 
                     onChange={(e) => setCliente({...cliente, email: e.target.value})} />
                 </div>
                 <div>
-                    <label htmlFor="text">Observação</label>
+                    <label htmlFor="text">Observação:</label>
                     <textarea name="observação" id="obs" value={cliente.obs}
                     onChange={(e) => setCliente({...cliente, obs: e.target.value})} ></textarea>
                 </div>  
-
-                <button onClick={excluirCliente} className="Excluir">Excluir</button>
+                <div> <button onClick={excluirCliente} className="Excluir">Excluir</button></div>
+               
 
             </form>
         </div>

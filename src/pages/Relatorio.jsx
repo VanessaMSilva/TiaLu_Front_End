@@ -7,7 +7,15 @@ function Relatorio(){
         <div className="cut">
             <Menu/>
             <div className="supre">
-                <h2 className="center">Relatorio devedores</h2>
+            
+                            
+                <div className="header">
+                <h2>Relatorio devedores</h2> 
+                </div>
+                              
+                          
+                     
+                
                 <div className="forms">
                 </div>
             </div>

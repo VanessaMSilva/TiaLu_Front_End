@@ -41,14 +41,14 @@ function Sobre(){
         <div id="main-container" className="container-fluid">
          
           <div className="row justify-content-center">   
-          <div className="col-md-4 flex-column justify-content-center align-items-start">
+          <div className="col-md-4 d-flex flex-column justify-content-center align-items-center">
                
                   <h1>Sobre da</h1>
                   <h1>tia lu</h1>
                   <h2>Farpas & Vendas</h2>
                   <h3>Concessões</h3>
-                  <h2>Cantina da Tia Lu</h2>
-                  <h3>Lanchonete</h3>
+                  <h4>Cantina da Tia Lu</h4>
+                  <h5>Lanchonete</h5>
           </div>    
             <div className="col-md-5 d-flex flex-column justify-content-center align-items-start">
                <div id="sobre">
