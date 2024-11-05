@@ -23,7 +23,12 @@ function Alterar(){
         try {
             const response = await axios.get(`http://localhost:3333/cliente/${cpf}`);
             console.log("Dados do cliente:", response.data);
-            setCliente(response.data);
+            if (response.data){
+                setCliente(response.data);
+            } else {
+                alert("Cliente não encontrado!")
+            }
+            
         } catch (error) {
             console.error("Erro ao buscar cliente:", error);
             alert("Cliente não encontrado.");
@@ -31,8 +36,7 @@ function Alterar(){
     }
     
 
-    async function alterCliente(e) {
-        e.preventDefault(); 
+    async function alterCliente() {
         try {
             const response = await axios.put("http://localhost:3333/cliente", {
                 nome: cliente.nome,
