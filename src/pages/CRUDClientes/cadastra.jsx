@@ -2,6 +2,7 @@ import Menu from "./../Menu";
 import tia from '../../assets/tialu.png'; // ajuste o caminho conforme a estrutura do seu projeto
 import React, { useState } from 'react';
 import axios from "axios";
+import InputMask from 'react-text-mask';
 
 function Cadastrar(){
 
@@ -101,7 +102,8 @@ function Cadastrar(){
                 </div>
                 <div>
                     <label htmlFor="Telefone">Telefone:</label>
-                    <input type="text" value={inputTel} 
+                    <InputMask type="text" value={inputTel} 
+                    mask={['(', /\d/, /\d/, ')', ' ', /\d/, ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
                     onChange={(e) => setInputTel(e.target.value)} />
                 </div>
                 <div>

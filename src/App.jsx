@@ -18,6 +18,10 @@ import Excluirv from "./pages/CRUDVendas/excluir";
 //Importa as pastas de CRUD de cardapio
 import Principalcar from "./pages/CRUDCardapio/principal";
 import Cardapio from "./pages/CRUDCardapio/cardapio";
+//Importa as pastas de CRUD de login
+import Cadastrarl from "./pages/CRUDLogin/cadastrar";
+import Alterarl from "./pages/CRUDLogin/alterar";
+import Excluirl from "./pages/CRUDLogin/excluir";
 
 
 function App() {
@@ -45,6 +49,10 @@ function App() {
 
         <Route path="/Principalcar" element={<Principalcar/>}/>
         <Route path="/Cardapio" element={<Cardapio/>}/>
+
+        <Route path="/Cadastrarl" element={<Cadastrarl/>}/>
+        <Route path="/Alterarl" element={<Alterarl/>}/>
+        <Route path="/Excluirl" element={<Excluirl/>}/>
 
       </Routes>
       </BrowserRouter>    
