@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Menu from "./../Menu";
-import tia from '../../assets/tialu.png'; // ajuste o caminho conforme a estrutura do seu projeto
+import tia from '../../assets/tialu.png'; // Ajuste o caminho conforme a estrutura do seu projeto
 import axios from "axios";
 
 function Excluir() {
@@ -22,7 +22,7 @@ function Excluir() {
         event.preventDefault();
 
         try {
-            const response = await axios.get(`http://seu-endereco-de-api.com/vendas/${cpfBusca}`);
+            const response = await axios.get(`http://localhost:3333/vendas/${cpfBusca}`);
             if (response.status === 200) {
                 setFormData(response.data); // Carrega os dados para exibição
                 setCarregado(true);

@@ -4,12 +4,15 @@ import tia from './../../assets/tialu.png'; // ajuste o caminho conforme a estru
 import axios from "axios"; // Importa axios para requisições HTTP
 
 function Alterar() {
-    // Estado para armazenar os valores dos inputs e o CPF de busca
-    const [cpfBusca, setCpfBusca] = useState("");
+    // Estado para armazenar os valores dos inputs e o ID de busca
+    const [idBusca, setIdBusca] = useState(""); // Mudança: busca pelo ID da venda
     const [formData, setFormData] = useState({
-        nome: "",
+        nome_cliente: "",
         cpf: "",
-        produtos: ""
+        produto: "",
+        quantidade: "",
+        valor_total: "",
+        data_venda: ""
     });
     const [carregado, setCarregado] = useState(false); // Indica se os dados foram carregados para edição
 
@@ -22,39 +25,47 @@ function Alterar() {
         });
     };
 
-    // Função para atualizar o estado do CPF de busca
-    const handleCpfBuscaChange = (event) => {
-        setCpfBusca(event.target.value);
+    // Função para atualizar o estado do ID de busca
+    const handleIdBuscaChange = (event) => {
+        setIdBusca(event.target.value);
     };
 
-    // Função para buscar os dados do cliente pelo CPF
-    const handleBuscarCliente = async (event) => {
+    // Função para buscar os dados da venda pelo ID
+    const handleBuscarVenda = async (event) => {
         event.preventDefault();
         
         try {
-            const response = await axios.get(`http://seu-endereco-de-api.com/vendas/${cpfBusca}`);
+            const response = await axios.get(`http://localhost:3333/vendas/${idBusca}`);
             if (response.status === 200) {
-                setFormData(response.data); // Carrega os dados para edição
+                const venda = response.data[0]; // Assuming the response is an array
+                setFormData({
+                    nome_cliente: venda.nome_cliente,
+                    cpf: venda.cpf,
+                    produto: venda.produto,
+                    quantidade: venda.quantidade,
+                    valor_total: venda.valor_total,
+                    data_venda: venda.data_venda
+                });
                 setCarregado(true);
             } else {
-                alert("Cliente não encontrado.");
+                alert("Venda não encontrada.");
             }
         } catch (error) {
-            console.error("Erro ao buscar cliente:", error);
+            console.error("Erro ao buscar venda:", error);
             alert("Ocorreu um erro. Tente novamente.");
         }
     };
 
-    // Função para alterar os dados do cliente
-    const handleAlterarCliente = async (event) => {
+    // Função para alterar os dados da venda
+    const handleAlterarVenda = async (event) => {
         event.preventDefault();
 
         try {
-            const response = await axios.put(`http://seu-endereco-de-api.com/vendas/${cpfBusca}`, formData);
+            const response = await axios.put(`http://localhost:3333/vendas/${idBusca}`, formData);
             if (response.status === 200) {
-                alert("Dados alterados com sucesso!");
-                setFormData({ nome: "", cpf: "", produtos: "" }); // Limpa o formulário após a alteração
-                setCpfBusca(""); // Limpa o CPF de busca
+                alert("Venda alterada com sucesso!");
+                setFormData({ nome_cliente: "", cpf: "", produto: "", quantidade: "", valor_total: "", data_venda: "" }); // Limpa o formulário após a alteração
+                setIdBusca(""); // Limpa o ID de busca
                 setCarregado(false);
             } else {
                 alert("Erro ao alterar os dados.");
@@ -82,14 +93,14 @@ function Alterar() {
                         </div>
                         <div className="forms">
                             <div><h2 className="rosa">Alterar vendas</h2></div>
-                            <form onSubmit={handleBuscarCliente}>
+                            <form onSubmit={handleBuscarVenda}>
                                 <div>
-                                    <label htmlFor="CPF">CPF Cliente:</label>
+                                    <label htmlFor="idBusca">ID da Venda:</label>
                                     <input
                                         type="text"
-                                        name="cpfBusca"
-                                        value={cpfBusca}
-                                        onChange={handleCpfBuscaChange}
+                                        name="idBusca"
+                                        value={idBusca}
+                                        onChange={handleIdBuscaChange}
                                     />
                                 </div>
                                 <div><button type="submit" className="Excluir">Buscar</button></div>
@@ -98,13 +109,13 @@ function Alterar() {
                             {carregado && (
                                 <>
                                     <div><h2 className="rosa">Informações</h2></div>
-                                    <form onSubmit={handleAlterarCliente}>
+                                    <form onSubmit={handleAlterarVenda}>
                                         <div>
-                                            <label htmlFor="nome">Nome Cliente:</label>
+                                            <label htmlFor="nome_cliente">Nome Cliente:</label>
                                             <input
                                                 type="text"
-                                                name="nome"
-                                                value={formData.nome}
+                                                name="nome_cliente"
+                                                value={formData.nome_cliente}
                                                 onChange={handleInputChange}
                                             />
                                         </div>
@@ -118,11 +129,38 @@ function Alterar() {
                                             />
                                         </div>
                                         <div>
-                                            <label htmlFor="produtos">Produtos:</label>
+                                            <label htmlFor="produto">Produto:</label>
                                             <input
                                                 type="text"
-                                                name="produtos"
-                                                value={formData.produtos}
+                                                name="produto"
+                                                value={formData.produto}
+                                                onChange={handleInputChange}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="quantidade">Quantidade:</label>
+                                            <input
+                                                type="number"
+                                                name="quantidade"
+                                                value={formData.quantidade}
+                                                onChange={handleInputChange}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="valor_total">Valor Total:</label>
+                                            <input
+                                                type="number"
+                                                name="valor_total"
+                                                value={formData.valor_total}
+                                                onChange={handleInputChange}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="data_venda">Data da Venda:</label>
+                                            <input
+                                                type="date"
+                                                name="data_venda"
+                                                value={formData.data_venda}
                                                 onChange={handleInputChange}
                                             />
                                         </div>

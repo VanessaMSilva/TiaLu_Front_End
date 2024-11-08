@@ -5,9 +5,12 @@ import axios from "axios";
 
 function Cadastrar() {
     const [formData, setFormData] = useState({
-        nome: "",
+        nome_cliente: "",
         cpf: "",
-        produtos: ""
+        produto: "",
+        quantidade: "",
+        valor_total: "",
+        data_venda: ""
     });
 
     const handleInputChange = (event) => {
@@ -20,12 +23,30 @@ function Cadastrar() {
 
     const handleCadastrarVenda = async (event) => {
         event.preventDefault();
+
+        // Validação simples dos campos
+        const camposFaltantes = [];
+        for (let campo in formData) {
+            if (!formData[campo]) camposFaltantes.push(campo);
+        }
         
+        if (camposFaltantes.length > 0) {
+            return alert("O(s) campo(s) é (são) obrigatório(s): " + camposFaltantes.join(", "));
+        }
+
         try {
-            const response = await axios.post("http://localhost:3333/vendas", formData);
+            const response = await axios.post("http://localhost:3333/vendas", {
+                nome_cliente: formData.nome_cliente,
+                cpf: formData.cpf,
+                produto: formData.produto,
+                quantidade: parseInt(formData.quantidade, 10),
+                valor_total: parseFloat(formData.valor_total),
+                data_venda: new Date(formData.data_venda).toISOString() // Garantindo o formato correto
+            });
+
             if (response.status === 201) {
                 alert("Venda cadastrada com sucesso!");
-                setFormData({ nome: "", cpf: "", produtos: "" });
+                setFormData({ nome_cliente: "", cpf: "", produto: "", quantidade: "", valor_total: "", data_venda: "" });
             } else {
                 alert("Erro ao cadastrar a venda.");
             }
@@ -54,11 +75,11 @@ function Cadastrar() {
                             <div><h2 className="rosa">Adicionar vendas</h2></div>
                             <form onSubmit={handleCadastrarVenda}>
                                 <div>
-                                    <label htmlFor="nome">Nome Cliente:</label>
+                                    <label htmlFor="nome_cliente">Nome Cliente:</label>
                                     <input
                                         type="text"
-                                        name="nome"
-                                        value={formData.nome}
+                                        name="nome_cliente"
+                                        value={formData.nome_cliente}
                                         onChange={handleInputChange}
                                     />
                                 </div>
@@ -72,11 +93,39 @@ function Cadastrar() {
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="produtos">Produtos:</label>
+                                    <label htmlFor="produto">Produto:</label>
                                     <input
                                         type="text"
-                                        name="produtos"
-                                        value={formData.produtos}
+                                        name="produto"
+                                        value={formData.produto}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="quantidade">Quantidade:</label>
+                                    <input
+                                        type="number"
+                                        name="quantidade"
+                                        value={formData.quantidade}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="valor_total">Valor Total:</label>
+                                    <input
+                                        type="number"
+                                        step="0.01"
+                                        name="valor_total"
+                                        value={formData.valor_total}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="data_venda">Data da Venda:</label>
+                                    <input
+                                        type="date"
+                                        name="data_venda"
+                                        value={formData.data_venda}
                                         onChange={handleInputChange}
                                     />
                                 </div>
