@@ -240,3 +240,52 @@ button {
 .rosa{
     color: rgb(186, 125, 135);
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Remove os espaçamentos entre as células */
+    margin: 20px 0; /* Margem entre a tabela e o restante do conteúdo */
+    background-color: #f9f9f9; /* Cor de fundo da tabela */
+}
+
+/* Estilos para os cabeçalhos da tabela */
+th {
+    background-color: rgb(186, 125, 135); /* Cor de fundo do cabeçalho */
+    color: white; /* Cor do texto do cabeçalho */
+    padding: 12px 15px; /* Espaçamento interno das células do cabeçalho */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+/* Estilos para as células da tabela */
+td {
+    padding: 12px 15px; /* Espaçamento interno das células */
+    text-align: left; /* Alinha o texto à esquerda */
+    border-bottom: 1px solid #ddd; /* Adiciona uma linha de separação entre as células */
+}
+
+/* Estilo para o hover nas linhas da tabela */
+tr:hover {
+    background-color: #f1f1f1; 
+}
+
+
+table.empty {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+}
+
+/* Estilos para a borda da tabela */
+table, th, td {
+    border: 1px solid #ddd; /* Define a cor da borda */
+}
+
+/* Adiciona espaçamento ao redor da tabela */
+.forms {
+    margin: 30px;
+}
+
+.buscar {
+    padding: 8px 16px;
+    margin-left: 10px; 
+}
