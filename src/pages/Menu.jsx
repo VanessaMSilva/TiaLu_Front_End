@@ -41,7 +41,8 @@ export function Menu(){
                     </a> */}
                 <nav id="menunav">
                 <ul>
-                    <li><a href="/">Ínicio</a></li>
+                    <li><a href="/">Login</a></li>
+                    <li><a href="/Home">Ínicio</a></li>
                     <li><a href="/Cadastrarp">Produto</a></li>
                     <li><a href="/Cadastrarc">Cliente</a></li>
                     <li><a href="/Cadastrarv">Venda</a></li>

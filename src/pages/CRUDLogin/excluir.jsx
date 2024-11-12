@@ -1,4 +1,4 @@
-import Menu from "./../Menu";
+import Menu from "../Menu";
 import tia from '../../assets/tialu.png'; // ajuste o caminho conforme a estrutura do seu projeto
 import React, { useState } from 'react';
 import axios from "axios";

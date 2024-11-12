@@ -1,8 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
+import React, { useState } from "react";
+import { AuthProvider } from './AuthContext';
+
 import Home from "./pages/Home";
 import Sobre from "./pages/Sobre";
 import Relatorio from "./pages/Relatorio";
 import Horario from "./pages/Horarios";
+import Login from "./pages/Login";
 //Importa as pastas de CRUD de produto
 import Cadastrarp from "./pages/CRUDProduto/cadastrar";
 import Alterarp from "./pages/CRUDProduto/alterar";
@@ -23,39 +27,62 @@ import Cadastrarl from "./pages/CRUDLogin/cadastrar";
 import Alterarl from "./pages/CRUDLogin/alterar";
 import Excluirl from "./pages/CRUDLogin/excluir";
 
-
 function App() {
-  
+
+  //verfificar autenticação login
+  const [logado, setLogado] = useState(
+    localStorage.getItem('isLoggedIn') === 'true'
+  );
+
   return (
     <div>
-      <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/sobre" element={<Sobre/>}/>
-        <Route path="/Relatorio" element={<Relatorio/>}/>
-        <Route path="/Horario" element={<Horario/>}/>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={logado ? <Navigate to="/Home" /> : <Login setLogado={setLogado} />}
+            />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/Horario" element={<Horario />} />
 
-        <Route path="/Cadastrarp" element={<Cadastrarp/>}/>
-        <Route path="/Alterarp" element={<Alterarp/>}/>
-        <Route path="/Excluirp" element={<Excluirp/>}/>
+            {logado && (
+              <>
+                <Route path="/Home" element={<Home />} />
+                <Route path="/Relatorio" element={<Relatorio />} />
+                <Route path="/Cadastrarp" element={<Cadastrarp />} />
+                <Route path="/Alterarp" element={<Alterarp />} />
+                <Route path="/Excluirp" element={<Excluirp />} />
+                <Route path="/Cadastrarc" element={<Cadastrarc />} />
+                <Route path="/Alterarc" element={<Alterarc />} />
+                <Route path="/Excluirc" element={<Excluirc />} />
+                <Route path="/Cadastrarv" element={<Cadastrarv />} />
+                <Route path="/Alterarv" element={<Alterarv />} />
+                <Route path="/Excluirv" element={<Excluirv />} />
+                <Route path="/Principalcar" element={<Principalcar />} />
+                <Route path="/Cadastrarl" element={<Cadastrarl />} />
+                <Route path="/Alterarl" element={<Alterarl />} />
+                <Route path="/Excluirl" element={<Excluirl />} />
+                <Route path="/Cardapio" element={<Cardapio />} />
+              </>
+            )}
 
-        <Route path="/Cadastrarc" element={<Cadastrarc/>}/>
-        <Route path="/Alterarc" element={<Alterarc/>}/>
-        <Route path="/Excluirc" element={<Excluirc/>}/>
-
-        <Route path="/Cadastrarv" element={<Cadastrarv/>}/>
-        <Route path="/Alterarv" element={<Alterarv/>}/>
-        <Route path="/Excluirv" element={<Excluirv/>}/>
-
-        <Route path="/Principalcar" element={<Principalcar/>}/>
-        <Route path="/Cardapio" element={<Cardapio/>}/>
-
-        <Route path="/Cadastrarl" element={<Cadastrarl/>}/>
-        <Route path="/Alterarl" element={<Alterarl/>}/>
-        <Route path="/Excluirl" element={<Excluirl/>}/>
-
-      </Routes>
-      </BrowserRouter>    
+            <Route path="*" element={
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100vh',
+                textAlign: 'center'
+              }}>
+                <h4>
+                  Acesso restrito. Clique <Link to="/">aqui</Link> para efetuar o login!
+                </h4>
+              </div>
+            } />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   )
 }
